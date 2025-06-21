@@ -1,8 +1,17 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import { getSortedPostsData, PostData } from '../../lib/posts';
+import BlogPostCard from '../../components/BlogPostCard';
+import { motion } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
+import Link from 'next/link';
 
 const POSTS_PER_PAGE = 10;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<PostData[]>([]);
@@ -49,16 +58,45 @@ export default function BlogPage() {
   }, [hasMore, loading]);
 
   return (
-    <div>
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <h2>{post.title}</h2>
-          <p>{post.description}</p>
-        </div>
-      ))}
+    <section className="container py-12">
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-8 text-center text-4xl font-bold tracking-widest animate-flicker"
+      >
+        Blog Posts
+      </motion.h1>
+      <motion.div
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.1 } },
+        }}
+      >
+        {posts.map((post) => (
+          <motion.div key={post.slug} variants={itemVariants}>
+            <Card className="flex h-full flex-col">
+              <CardHeader>
+                <CardTitle>{post.title}</CardTitle>
+                <CardDescription>{post.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="mt-auto">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="text-accent hover:underline relative overflow-hidden group"
+                >
+                  <span className="relative z-10">Read more</span>
+                </Link>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
       {loading && <p>Loading...</p>}
       {!hasMore && <p>No more posts to load.</p>}
       <div ref={containerRef} style={{ height: '20px' }} />
-    </div>
+    </section>
   );
 }
