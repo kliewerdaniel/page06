@@ -1,6 +1,4 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import remarkGfm from "remark-gfm";
-import rehypePrismPlus from "rehype-prism-plus";
 
 interface MarkdownRendererProps {
   source: MDXRemoteSerializeResult;

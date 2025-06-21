@@ -9,7 +9,7 @@ type PageProps = {
 };
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const slugs = getAllPostSlugs(); // this can be sync
+  const slugs = getAllPostSlugs(); // even if this is synchronous, that's fine
   return slugs.map((slug) => ({ slug }));
 }
 
