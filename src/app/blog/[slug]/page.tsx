@@ -21,8 +21,8 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Page({ params }: PageProps) {
-  const { slug } = params;
+export default async function Page(props: PageProps) {
+  const { slug } = props.params;
   const postData = await getPostData(slug);
   return <BlogPostClient postData={postData} />;
 }
