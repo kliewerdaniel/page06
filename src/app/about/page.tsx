@@ -20,7 +20,7 @@ export default function AboutPage() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          I’m Daniel Kliewer, a software engineer and creative technologist based in Austin, Texas. I work at the intersection of local AI, full-stack development, and systems thinking. I specialize in building tools that are introspective, agentic, and capable of understanding context — not just processing it.
+          I&apos;m Daniel Kliewer, a software engineer and creative technologist based in Austin, Texas. I work at the intersection of local AI, full-stack development, and systems thinking. I specialize in building tools that are introspective, agentic, and capable of understanding context — not just processing it.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export default function AboutPage() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          I'm currently focused on building personal knowledge interfaces, economic analysis agents, and infrastructure that supports AI workflows without external dependencies.
+          I&apos;m currently focused on building personal knowledge interfaces, economic analysis agents, and infrastructure that supports AI workflows without external dependencies.
         </motion.p>
 
         <motion.h2
@@ -49,7 +49,7 @@ export default function AboutPage() {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mt-10 text-3xl font-bold"
         >
-          Skills & Technologies
+          Skills &amp; Technologies
         </motion.h2>
         <motion.ul
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function AboutPage() {
         >
           <li><strong>Languages:</strong> Python, JavaScript, TypeScript, R</li>
           <li><strong>Frameworks:</strong> Next.js, FastAPI, Django, LangChain, Jekyll</li>
-          <li><strong>AI & Data:</strong> Ollama, ChromaDB, LangChain, LLaVA, RLHF</li>
+          <li><strong>AI &amp; Data:</strong> Ollama, ChromaDB, LangChain, LLaVA, RLHF</li>
           <li><strong>Tools:</strong> Docker, GitHub Actions, Netlify, Tailwind CSS, Framer Motion</li>
         </motion.ul>
 
@@ -80,10 +80,10 @@ export default function AboutPage() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="list-disc list-inside space-y-2"
         >
-          <li>Local AI & self-hosted models</li>
+          <li>Local AI &amp; self-hosted models</li>
           <li>Human-aligned system interfaces</li>
           <li>Data annotation infrastructure</li>
-          <li>Knowledge graphs & memory structures</li>
+          <li>Knowledge graphs &amp; memory structures</li>
           <li>Long-context agents</li>
         </motion.ul>
       </div>
