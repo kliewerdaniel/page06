@@ -5,14 +5,6 @@ import type { Metadata } from 'next';
 interface PageProps {
   params: {
     slug: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    then: Promise<any>['then'];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    catch: Promise<any>['catch'];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    finally: Promise<any>['finally'];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [Symbol.toStringTag]: Promise<any>[typeof Symbol.toStringTag];
   };
 }
 
