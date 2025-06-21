@@ -2,7 +2,13 @@ import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import BlogPostClient from '@/components/blog-post-client';
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const postData = await getPostData(params.slug);
   return {
     title: postData.title,
@@ -15,7 +21,8 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const postData = await getPostData(params.slug);
+export default async function Page({ params }: PageProps) {
+  const { slug } = params;
+  const postData = await getPostData(slug);
   return <BlogPostClient postData={postData} />;
 }
