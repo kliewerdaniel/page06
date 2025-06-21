@@ -21,7 +21,7 @@ export type PostData = {
   serializedContent?: MDXRemoteSerializeResult; // Make optional
 };
 
-export function getSortedPostsData() {
+export function getSortedPostsData(limit?: number, offset?: number) {
   // Get file names under /_posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -42,13 +42,19 @@ export function getSortedPostsData() {
     };
   });
   // Sort posts by date descending
-  return allPostsData.sort((a, b) => {
+  const sortedPosts = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
+
+  if (limit !== undefined && offset !== undefined) {
+    return sortedPosts.slice(offset, offset + limit);
+  }
+
+  return sortedPosts;
 }
 
 export function getAllPostSlugs(): string[] {
