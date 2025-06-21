@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import { getSortedPostsData, PostData } from '../../lib/posts';
-import BlogPostCard from '../../components/BlogPostCard';
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import Link from 'next/link';
