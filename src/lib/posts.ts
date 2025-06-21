@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypePrismPlus from 'rehype-prism-plus';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 const postsDirectory = path.join(process.cwd(), '.', '_posts');
 
@@ -17,7 +18,7 @@ export type PostData = {
   author?: string;
   image?: string;
   imageAlt?: string;
-  [key: string]: string | string[] | undefined; // Restricted to string-based values
+  serializedContent: MDXRemoteSerializeResult;
 };
 
 export function getSortedPostsData() {
