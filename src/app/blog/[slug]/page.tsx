@@ -8,8 +8,8 @@ type PageProps = {
   };
 };
 
-export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const slugs = getAllPostSlugs(); // this can be sync
   return slugs.map((slug) => ({ slug }));
 }
 
