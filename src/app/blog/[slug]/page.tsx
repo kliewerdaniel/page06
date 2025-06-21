@@ -2,18 +2,16 @@ import { notFound } from "next/navigation";
 import { getPostData, getAllPostSlugs } from "@/lib/posts";
 import MarkdownRenderer from "@/components/markdown-renderer";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const slugs = getAllPostSlugs(); // even if this is synchronous, that's fine
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const post = await getPostData(params.slug);
 
   if (!post) {
