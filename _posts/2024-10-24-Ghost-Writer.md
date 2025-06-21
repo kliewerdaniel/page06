@@ -134,7 +134,7 @@ touch .env
 
 **Sample `.env` Content:**
 
-```env
+```bash
 DEBUG=True
 SECRET_KEY=your_django_secret_key
 DATABASE_URL=postgres://user:password@localhost:5432/ghostwriter_db
@@ -159,7 +159,7 @@ touch .env
 
 **Sample `.env` Content:**
 
-```env
+```bash
 REACT_APP_API_URL=http://localhost:8000/api/
 REACT_APP_OPENAI_API_KEY=your_openai_api_key
 ```

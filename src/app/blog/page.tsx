@@ -1,10 +1,16 @@
 import { getSortedPostsData } from '../../lib/posts';
-import BlogPostsClient from '@/components/blog-posts-client';
 
 export default function BlogPage() {
   const allPostsData = getSortedPostsData();
 
   return (
-    <BlogPostsClient posts={allPostsData} />
+    <div>
+      {allPostsData.map((post) => (
+        <div key={post.slug}>
+          <h2>{post.title}</h2>
+          <p>{post.description}</p>
+        </div>
+      ))}
+    </div>
   );
 }

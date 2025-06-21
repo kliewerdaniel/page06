@@ -1,11 +1,9 @@
 ---
 layout: post
 title:  High-Level Architecture for the LangChain Application using Ollama
-date:   2024-12-27 07:42:44 -0500
+date: 2024-12-27 07:42:44 -0500
 ---
 
-
-![Alt text](/static/images/langchain.png){:loading="lazy"}
 
 
 

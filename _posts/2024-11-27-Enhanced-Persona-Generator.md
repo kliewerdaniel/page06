@@ -925,7 +925,7 @@ touch .env
 
 Edit the `.env` file and add:
 
-```dotenv
+```plaintext
 OPENAI_API_KEY=your-openai-api-key-here
 ```
 

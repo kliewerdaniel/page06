@@ -1,19 +1,13 @@
 import { notFound } from "next/navigation";
-import { getPostData, getAllPostSlugs } from "@/lib/posts";
+import { getPostData } from "@/lib/posts";
 import MarkdownRenderer from "@/components/markdown-renderer";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
+export { generateStaticParams } from "./generate-static-params";
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const slugs = getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function Page(props: any) {
+  const { params } = props;
 
-export default async function Page({ params }: PageProps) {
   const post = await getPostData(params.slug);
 
   if (!post) {

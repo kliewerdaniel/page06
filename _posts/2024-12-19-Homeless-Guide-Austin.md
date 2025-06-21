@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Homeless Guide Austin
-date:   2024-12-25 07:42:44 -0500
+date: 2024-12-25 07:42:44 -0500
 ---
 # Navigating Homelessness in Austin: A Comprehensive Guide with Personal Insights
 

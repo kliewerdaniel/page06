@@ -130,11 +130,11 @@ To interact with Instagram programmatically, you'll need to use the **Instagram 
    - **App Review**: If your app is intended for public use, submit it for review to obtain necessary permissions.
 
 6. **Update `.env` File**:
-   ```dotenv
-   INSTAGRAM_ACCESS_TOKEN=your_instagram_access_token
-   INSTAGRAM_USER_ID=your_instagram_user_id
-   OPENAI_API_KEY=your_openai_api_key
-   ```
+```plaintext
+INSTAGRAM_ACCESS_TOKEN=your_instagram_access_token
+INSTAGRAM_USER_ID=your_instagram_user_id
+OPENAI_API_KEY=your_openai_api_key
+```
 
    - **Security Reminder**: Ensure `.env` is added to `.gitignore` to prevent sensitive information from being exposed.
 

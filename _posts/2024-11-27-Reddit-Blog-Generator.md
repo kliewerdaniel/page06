@@ -120,16 +120,16 @@ To interact with Reddit's API, you'll need to create an application within your 
    - **User Agent**: A descriptive string, e.g., `python:RedditBlogGenerator:1.0 (by /u/yourusername)`
 
 5. **Update `.env` File**:
-   ```dotenv
-   REDDIT_CLIENT_ID=your_reddit_client_id
-   REDDIT_CLIENT_SECRET=your_reddit_client_secret
-   REDDIT_USER_AGENT=python:RedditBlogGenerator:1.0 (by /u/yourusername)
-   REDDIT_USERNAME=your_reddit_username
-   REDDIT_PASSWORD=your_reddit_password
-   OPENAI_API_KEY=your_openai_api_key
-   # BLOG_API_URL=  # Not needed for local saving
-   # BLOG_API_KEY=  # Not needed for local saving
-   ```
+```plaintext
+REDDIT_CLIENT_ID=your_reddit_client_id
+REDDIT_CLIENT_SECRET=your_reddit_client_secret
+REDDIT_USER_AGENT=python:RedditBlogGenerator:1.0 (by /u/yourusername)
+REDDIT_USERNAME=your_reddit_username
+REDDIT_PASSWORD=your_reddit_password
+OPENAI_API_KEY=your_openai_api_key
+# BLOG_API_URL=  # Not needed for local saving
+# BLOG_API_KEY=  # Not needed for local saving
+```
 
    **Security Reminder**: Ensure `.env` is added to `.gitignore` to prevent sensitive information from being committed.
    ```bash
@@ -148,9 +148,9 @@ To utilize GPT-4 for generating blog content, you'll need an OpenAI account with
    - Navigate to [OpenAI API Keys](https://platform.openai.com/account/api-keys).
    - Click **"Create new secret key"**.
    - Copy the generated key and add it to your `.env` file:
-     ```dotenv
-     OPENAI_API_KEY=your_openai_api_key
-     ```
+```plaintext
+OPENAI_API_KEY=your_openai_api_key
+```
 
 3. **Secure Your API Key**:
    - Ensure `.env` is in `.gitignore`.

@@ -1,4 +1,7 @@
+"use client";
+
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import React from "react";
 
 interface MarkdownRendererProps {
   source: MDXRemoteSerializeResult;

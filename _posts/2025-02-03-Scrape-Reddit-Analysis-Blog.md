@@ -30,13 +30,6 @@ Ultimately, this system is more than a utility; it’s a lens through which user
 
 
 
-
-<img src="/static/images/Screenshot1.png" alt="My image" loading="lazy">
-
-
-<img src="/static/images/Screenshot2.png" alt="My image" loading="lazy">
-
-
 [https://github.com/kliewerdaniel/RedToBlog02](https://github.com/kliewerdaniel/RedToBlog02)
 
 
@@ -484,4 +477,3 @@ if __name__ == "__main__":
 
 ---
 For more information, visit the [GitHub Repository](https://github.com/kliewerdaniel/RedToBlog02).
-
