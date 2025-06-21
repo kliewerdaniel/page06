@@ -1,3 +1,4 @@
+"use server";
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -21,7 +22,7 @@ export type PostData = {
   serializedContent?: MDXRemoteSerializeResult; // Make optional
 };
 
-export function getSortedPostsData(limit?: number, offset?: number) {
+export async function getSortedPostsData(limit?: number, offset?: number) {
   // Get file names under /_posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -57,7 +58,7 @@ export function getSortedPostsData(limit?: number, offset?: number) {
   return sortedPosts;
 }
 
-export function getAllPostSlugs(): string[] {
+export async function getAllPostSlugs(): Promise<string[]> {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
 }
