@@ -18,7 +18,7 @@ export type PostData = {
   author?: string;
   image?: string;
   imageAlt?: string;
-  serializedContent: MDXRemoteSerializeResult;
+  serializedContent?: MDXRemoteSerializeResult; // Make optional
 };
 
 export function getSortedPostsData() {

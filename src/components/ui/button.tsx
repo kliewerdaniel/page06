@@ -42,11 +42,32 @@ export interface ButtonProps
   extends HTMLMotionProps<"button">, // Extend HTMLMotionProps for Framer Motion compatibility
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  children?: React.ReactNode; // Explicitly define children
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => { // Don't destructure style here
     const Comp = asChild ? Slot : motion.button;
+
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    // Separate framer-motion specific props and event handlers from standard HTML props
+    const {
+      initial, animate, transition, variants, whileHover, whileTap, whileDrag,
+      whileFocus, whileInView, onAnimationStart, onAnimationComplete, onUpdate,
+      layout, layoutId, layoutRoot, drag, dragConstraints, dragElastic,
+      dragMomentum, dragPropagation, dragTransition, dragControls, onDragStart,
+      onDrag, onDragEnd, onPan, onPanStart, onPanEnd, onTap, onTapStart,
+      onTapCancel, onHoverStart, onHoverEnd,
+      style, // Extract style here
+      ...restHtmlProps // These should be safe for Slot
+    } = props;
+    /* eslint-enable @typescript-eslint/no-unused-vars */
+
+    // Conditionally pass props based on whether it's a Slot or motion.button
+    const componentProps = asChild
+      ? restHtmlProps // Pass only standard HTML props to Slot, style is omitted
+      : { ...props }; // Pass all HTMLMotionProps to motion.button (including style)
+
     return (
       <Comp
         className={cn(
@@ -54,7 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "relative z-10 group"
         )}
         ref={ref}
-        {...props}
+        {...componentProps}
       >
         {children}
         <motion.span
@@ -73,6 +94,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
