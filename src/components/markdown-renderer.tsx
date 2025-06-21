@@ -1,14 +1,15 @@
-import ReactMarkdown from "react-markdown";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import remarkGfm from "remark-gfm";
+import rehypePrismPlus from "rehype-prism-plus";
 
 interface MarkdownRendererProps {
-  content: string;
+  source: MDXRemoteSerializeResult;
 }
 
-const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ source }) => {
   return (
     <div className="prose dark:prose-invert max-w-none">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      <MDXRemote {...source} components={{}} />
     </div>
   );
 };
