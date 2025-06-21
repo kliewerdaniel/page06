@@ -51,15 +51,9 @@ export function getSortedPostsData() {
   });
 }
 
-export function getAllPostSlugs() {
+export function getAllPostSlugs(): string[] {
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        slug: fileName.replace(/\.md$/, ''),
-      },
-    };
-  });
+  return fileNames.map((fileName) => fileName.replace(/\.md$/, ''));
 }
 
 export async function getPostData(slug: string) {
