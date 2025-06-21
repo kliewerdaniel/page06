@@ -12,7 +12,12 @@ export type PostData = {
   title: string;
   date: string;
   description: string;
-  [key: string]: any; // Allow for other frontmatter properties
+  content?: string;
+  tags?: string[];
+  author?: string;
+  image?: string;
+  imageAlt?: string;
+  [key: string]: string | string[] | undefined; // Restricted to string-based values
 };
 
 export function getSortedPostsData() {
