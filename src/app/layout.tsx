@@ -29,7 +29,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow flex items-center justify-center">
           <PageTransitionWrapper>{children}</PageTransitionWrapper>
         </main>
         <Footer />
