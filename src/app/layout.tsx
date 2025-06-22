@@ -16,11 +16,24 @@ export const metadata: Metadata = {
   title: "Daniel Kliewer",
   description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
   openGraph: {
-    images: "/art/cap.JPG",
+    title: "Daniel Kliewer",
+    description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
+    type: "website",
+    url: "https://danielkliewer.com",
+    images: [
+      {
+        url: "https://danielkliewer.com/art/cap.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Daniel Kliewer Portfolio Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: "/art/cap.JPG",
+    title: "Daniel Kliewer",
+    description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
+    images: ["https://danielkliewer.com/art/cap.jpg"],
   },
 };
 
