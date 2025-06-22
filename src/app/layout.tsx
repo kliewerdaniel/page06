@@ -15,6 +15,9 @@ const shareTechMono = Share_Tech_Mono({
 export const metadata: Metadata = {
   title: "Daniel Kliewer",
   description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
+  openGraph: {
+    images: "/art/cap.JPG",
+  },
 };
 
 export default function RootLayout({
