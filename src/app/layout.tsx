@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   openGraph: {
     images: "/art/cap.JPG",
   },
+  twitter: {
+    card: "summary_large_image",
+    images: "/art/cap.JPG",
+  },
 };
 
 export default function RootLayout({
