@@ -15,10 +15,10 @@ export default async function Page(props: any) {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <article className="prose lg:prose-xl dark:prose-invert mx-auto" style={{fontSize: '1.1rem', lineHeight: '1.75'}}>
-        <h1>{post.title}</h1>
-        <p className="text-gray-500 dark:text-gray-400">
+    <main className="flex justify-center py-8">
+      <article className="w-full max-w-3xl px-4 prose lg:prose-xl dark:prose-invert">
+        <h1 className="text-5xl font-bold mb-8 text-center">{post.title}</h1>
+        <p className="text-gray-500 dark:text-gray-400 text-center mb-12">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",

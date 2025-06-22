@@ -93,8 +93,12 @@ export default function BlogPage() {
           </motion.div>
         ))}
       </motion.div>
-      {loading && <p>Loading...</p>}
-      {!hasMore && <p>No more posts to load.</p>}
+      {loading && (
+  <div className="flex justify-center items-center h-12">
+    <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-accent"></div>
+  </div>
+)}
+      
       <div ref={containerRef} style={{ height: '20px' }} />
     </section>
   );
