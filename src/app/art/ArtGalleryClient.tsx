@@ -44,6 +44,9 @@ export default function ArtGalleryClient({ images }: ArtGalleryClientProps) {
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="transition-transform duration-300 ease-in-out hover:scale-110"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={image.blurDataURL}
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
               <p className="text-white text-lg font-semibold">{image.alt}</p>
@@ -76,6 +79,7 @@ export default function ArtGalleryClient({ images }: ArtGalleryClientProps) {
                 height={600}
                 style={{ objectFit: 'contain' }}
                 className="rounded-lg shadow-xl"
+                priority
               />
               <button
                 onClick={closeLightbox}
