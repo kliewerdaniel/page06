@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
     type: "website",
     url: "https://danielkliewer.com",
+    siteName: "Daniel Kliewer Portfolio",
+    locale: "en_US",
     images: [
       {
         url: "https://danielkliewer.com/art/cap.JPG",
@@ -28,12 +30,6 @@ export const metadata: Metadata = {
         alt: "Daniel Kliewer Portfolio Preview",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Daniel Kliewer",
-    description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
-    images: ["https://danielkliewer.com/art/cap.JPG"],
   },
 };
 
