@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://danielkliewer.com",
     images: [
       {
-        url: "https://danielkliewer.com/art/cap.jpg",
+        url: "https://danielkliewer.com/art/cap.JPG",
         width: 1200,
         height: 630,
         alt: "Daniel Kliewer Portfolio Preview",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daniel Kliewer",
     description: "A modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
-    images: ["https://danielkliewer.com/art/cap.jpg"],
+    images: ["https://danielkliewer.com/art/cap.JPG"],
   },
 };
 
