@@ -40,6 +40,12 @@ export default async function SyllabusPage() {
       <p className="text-lg mb-4">Weeks: {syllabus.weeks}</p>
       <p className="text-md mb-8">Status: {syllabus.status}</p>
       <MarkdownRenderer source={mdxSource} components={customComponents} />
+      <p className="text-lg mt-8 mb-8">
+        This course is offered completely free of charge! If you find value in this content and would like to support the creator, you can{' '}
+        <a href="https://www.paypal.com/ncp/payment/H4FUU55N9V7CW" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+          send a tip via PayPal
+        </a>. Your support is greatly appreciated!
+      </p>
     </div>
   );
 }

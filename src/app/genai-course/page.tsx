@@ -1,6 +1,13 @@
 import Link from 'next/link';
 import { allModuleDocs } from 'contentlayer/generated';
 
+interface ModuleDoc {
+  title: string;
+  weeks: string;
+  status: string;
+  slug: string;
+}
+
 // Define a custom sort order for modules
 const customModuleOrder = [
   'orientation',
@@ -21,18 +28,18 @@ export default function GenAICourseLanding() {
         Welcome to GEN-AI 4001! This course provides a comprehensive deep dive into the engineering aspects of generative AI, from foundational models to advanced deployment and governance.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Syllabus</h2>
+      <h2 className="text-2xl font-semibold mt-12 mb-4">Syllabus</h2>
       <p>
         <Link href="/genai-course/syllabus" className="text-blue-600 hover:underline">
           View the full course syllabus
         </Link>
       </p>
-      <p></p>
 
-      <h2 className="text-2xl font-semibold mb-4">Course Modules</h2>
-      <ul className="space-y-2">
-        {allModuleDocs
-          .sort((a, b) => {
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4">Course Modules</h2>
+      <ul className="space-y-2 py-4">
+        {((allModuleDocs as ModuleDoc[]) || [])
+          .sort((a: ModuleDoc, b: ModuleDoc) => {
             const aIndex = customModuleOrder.indexOf(a.slug);
             const bIndex = customModuleOrder.indexOf(b.slug);
 
@@ -44,7 +51,7 @@ export default function GenAICourseLanding() {
 
             return aIndex - bIndex;
           })
-          .map((module) => (
+          .map((module: ModuleDoc) => (
             <li key={module.slug}>
               <Link href={`/genai-course/modules/${module.slug}`} className="text-blue-600 hover:underline">
                 {module.title} ({module.weeks})
@@ -52,7 +59,12 @@ export default function GenAICourseLanding() {
             </li>
           ))}
       </ul>
-
+      <p className="text-lg mt-8 mb-8">
+        This course is offered completely free of charge! If you find value in this content and would like to support the creator, you can{' '}
+        <a href="https://www.paypal.com/ncp/payment/H4FUU55N9V7CW" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+          send a tip via PayPal
+        </a>. Your support is greatly appreciated!
+      </p>
 
     </div>
   );
