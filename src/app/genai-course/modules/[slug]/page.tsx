@@ -4,13 +4,14 @@ import { serialize } from 'next-mdx-remote/serialize';
 import MarkdownRenderer from '@/components/markdown-renderer';
 
 interface ModulePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function ModulePage({ params }: ModulePageProps) {
-  const module = allModuleDocs.find((doc) => doc.slug === params.slug);
+  const resolvedParams = await params;
+  const module = allModuleDocs.find((doc) => doc.slug === resolvedParams.slug);
 
   if (!module) {
     notFound();

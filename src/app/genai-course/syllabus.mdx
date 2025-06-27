@@ -4,15 +4,75 @@ weeks: "1-24"
 status: "draft"
 ---
 
-# GEN-AI 4001: Applied Generative AI Engineering Syllabus
+Gen-AI Engineering: Full-Stack Applied Course
 
-| Slug | Title | Weeks | Deliverable placeholders |
-|------|-------|-------|--------------------------|
-| orientation | Orientation: What is a Gen-AI Engineer? | 1 | roadmap.md, env-setup.md |
-| transformer | Module 1: Implementing Transformers from Scratch | 2-4 | mini-gpt.md, walkthrough.md |
-| fine-tune | Module 2: Domain-Specific Fine-Tuning | 5-7 | lora-script.md, eval-notebook.md |
-| serving | Module 3: Serving LLMs with FastAPI + VLLM | 8-10 | docker-app.md, load-test.md |
-| rag | Module 4: RAG with Vector Databases | 11-13 | rag-pipeline.md, retrieval-tests.md |
-| multimodal-guardrails | Module 5: Multimodal Reasoning & Guardrails | 14-16 | clip-fusion.md, policy-filters.md |
-| mlops | Module 6: MLOps and Model Governance | 17-19 | kubeflow-dag.md, grafana-dashboard.md |
-| capstone | Capstone: Job-Market Simulation | 20-24 | brief.md, portfolio-site.md |
+Course Title
+
+GEN-AI 4001: Applied Generative AI Engineering
+
+Course Description
+
+This intensive, fully hands-on course prepares learners to enter the job market as Gen-AI engineers by building real-world systems across the LLM pipeline. The curriculum assumes intermediate proficiency in Python and web development and emphasizes project-based learning to build deployable, portfolio-ready applications using current Gen-AI tooling.
+
+Learners will complete six engineering projects, each simulating responsibilities aligned with actual industry roles, from model training and fine-tuning to inference serving, retrieval-augmented generation (RAG), and production MLOps. All deliverables will be deployed to a public-facing site or GitHub repo and documented in blog-style posts.
+
+⸻
+
+Course Structure
+
+Week	Module Title	Deliverables
+1	Orientation: What is a Gen-AI Engineer?	Personal roadmap, learning plan, environment setup
+2–4	Module 1: Implementing Transformers from Scratch	PyTorch GPT mini-model, blog walkthrough, Jupyter notebook
+5–7	Module 2: Domain-Specific Fine-Tuning	LoRA training script, evaluation notebook, test dataset
+8–10	Module 3: Serving LLMs with FastAPI + VLLM	Docker app, streaming endpoint, load test script
+11–13	Module 4: RAG with Vector Databases	RAG pipeline with Chroma or Qdrant, retrieval test suite
+14–16	Module 5: Multimodal Reasoning & Guardrails	CLIP + text model fusion, content policy filters
+17–19	Module 6: MLOps and Model Governance	Kubeflow training DAG, Prometheus dashboard, rollback strategy
+20–24	Capstone: Job-Market Simulation	Take-home project, portfolio site, job tracker dashboard
+
+
+⸻
+
+Learning Outcomes
+
+By the end of this course, students will be able to:
+	1.	Implement and train foundational model architectures using PyTorch.
+	2.	Apply LoRA, PEFT, and evaluation metrics for efficient fine-tuning.
+	3.	Serve large models using VLLM and containerized inference stacks.
+	4.	Integrate vector search, embeddings, and hybrid retrieval.
+	5.	Add visual reasoning and apply guardrails for safe, robust systems.
+	6.	Build production-ready MLOps workflows with CI/CD and monitoring.
+	7.	Document, deploy, and present AI projects for professional hiring.
+
+⸻
+
+Assessment
+	•	Projects (70%): Six core modules with GitHub repos and written guides.
+	•	Capstone (20%): End-to-end application with code, deployment, and job-facing writeup.
+	•	Public Log (10%): Journal entries, blog posts, and engagement.
+
+⸻
+
+Resources
+	•	Tooling: PyTorch, Transformers (Hugging Face), VLLM, LangChain, ChromaDB, Triton, Docker, Kubernetes, Grafana, FastAPI.
+	•	Environment: GitHub, VS Code, Colab/Modal, local GPUs or cloud credits.
+	•	Content Access: All modules published freely at danielkliewer.com/genai-course.
+
+⸻
+
+Prerequisites
+	•	Intermediate Python (functions, classes, data structures)
+	•	Basic Linux CLI, Git, Docker
+	•	Familiarity with React/Next.js is helpful for full-stack deployment
+
+⸻
+
+Instructor Note
+
+This course is self-paced and based entirely on my personal journey becoming a Gen-AI engineer from scratch. I publish everything I learn, try, break, and fix, so you can follow along, fork the repos, or contribute to the open syllabus.
+
+⸻
+
+License
+	•	Content: CC BY-SA 4.0
+	•	Code: MIT License
