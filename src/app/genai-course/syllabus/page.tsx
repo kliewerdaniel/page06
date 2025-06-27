@@ -27,10 +27,11 @@ export default async function SyllabusPage() {
     InfoBlock: InfoBlock as MDXComponent,
     SectionTitle: SectionTitle as MDXComponent,
     SubSectionTitle: SubSectionTitle as MDXComponent,
+    CustomTable: CustomTable as MDXComponent, // Keep CustomTable defined for other uses if any
     ChecklistItem: ChecklistItem as MDXComponent,
-    table: CustomTable as MDXComponent, // Override default table rendering
     // You can also override default HTML elements if needed, e.g.,
     // h1: (props) => <h1 className="text-5xl font-extrabold my-8" {...props} />,
+    // table: CustomTable as MDXComponent, // Removed explicit override for now
   };
 
   return (
