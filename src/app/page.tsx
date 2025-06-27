@@ -87,6 +87,27 @@ export default function HomePage() {
                 />
               </Button>
             </Link>
+            <Link href="/genai-course" passHref target="_blank" rel="noopener noreferrer">
+              <Button
+                className="text-white bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10">GenAI Course</span>
+                <motion.span
+                  className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "100%" }}
+                  transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }}
+                />
+                <motion.span
+                  className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                  initial={{ x: "100%" }}
+                  animate={{ x: "-100%" }}
+                  transition={{ repeat: Infinity, duration: 0.5, ease: "linear", delay: 0.25 }}
+                />
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </motion.div>
