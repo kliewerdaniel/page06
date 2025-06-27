@@ -3,76 +3,229 @@ title: "GEN-AI 4001: Applied Generative AI Engineering Syllabus"
 weeks: "1-24"
 status: "draft"
 ---
+# GEN-AI 4001: Applied Generative AI Engineering
+## Building Production-Ready AI Systems from Foundation to Deployment
 
-Gen-AI Engineering: Full-Stack Applied Course
+---
 
-Course Title
+## 📋 Course Overview
 
-GEN-AI 4001: Applied Generative AI Engineering
+This intensive, project-driven course transforms intermediate developers into production-ready Generative AI engineers through hands-on implementation of real-world systems. Students build six complete applications spanning the entire ML lifecycle—from implementing transformer architectures to deploying scalable inference systems with comprehensive monitoring.
 
-Course Description
+**Duration:** 24 weeks | **Format:** Self-paced with milestone deadlines | **Level:** Intermediate to Advanced
 
-This intensive, fully hands-on course prepares learners to enter the job market as Gen-AI engineers by building real-world systems across the LLM pipeline. The curriculum assumes intermediate proficiency in Python and web development and emphasizes project-based learning to build deployable, portfolio-ready applications using current Gen-AI tooling.
+### What Makes This Course Different
+- **Zero theoretical fluff** — Every concept taught through building working systems
+- **Industry-aligned projects** — Each module mirrors actual Gen-AI engineering responsibilities
+- **Portfolio-first approach** — All deliverables become showcase-ready portfolio pieces
+- **Open-source methodology** — Complete transparency with public repos and documentation
 
-Learners will complete six engineering projects, each simulating responsibilities aligned with actual industry roles, from model training and fine-tuning to inference serving, retrieval-augmented generation (RAG), and production MLOps. All deliverables will be deployed to a public-facing site or GitHub repo and documented in blog-style posts.
+---
 
-⸻
+## 🎯 Learning Outcomes
 
-Course Structure
+Upon successful completion, students will demonstrate mastery in:
 
-Week	Module Title	Deliverables
-1	Orientation: What is a Gen-AI Engineer?	Personal roadmap, learning plan, environment setup
-2–4	Module 1: Implementing Transformers from Scratch	PyTorch GPT mini-model, blog walkthrough, Jupyter notebook
-5–7	Module 2: Domain-Specific Fine-Tuning	LoRA training script, evaluation notebook, test dataset
-8–10	Module 3: Serving LLMs with FastAPI + VLLM	Docker app, streaming endpoint, load test script
-11–13	Module 4: RAG with Vector Databases	RAG pipeline with Chroma or Qdrant, retrieval test suite
-14–16	Module 5: Multimodal Reasoning & Guardrails	CLIP + text model fusion, content policy filters
-17–19	Module 6: MLOps and Model Governance	Kubeflow training DAG, Prometheus dashboard, rollback strategy
-20–24	Capstone: Job-Market Simulation	Take-home project, portfolio site, job tracker dashboard
+**Foundation & Architecture**
+- Implement transformer models from mathematical foundations using PyTorch
+- Design and optimize neural network architectures for specific domains
+- Apply advanced training techniques including LoRA, PEFT, and quantization
 
+**Production Systems**
+- Deploy scalable LLM serving infrastructure using FastAPI and VLLM
+- Build robust RAG pipelines with vector databases and hybrid retrieval
+- Implement multimodal AI systems with safety guardrails and content filtering
 
-⸻
+**MLOps & Governance**
+- Architect end-to-end ML pipelines with automated training, evaluation, and deployment
+- Design monitoring and observability systems for production AI applications
+- Implement model governance frameworks including versioning, rollback, and A/B testing
 
-Learning Outcomes
+**Professional Readiness**
+- Create comprehensive technical documentation and architectural diagrams
+- Present complex AI systems to technical and non-technical stakeholders
+- Build a portfolio demonstrating full-stack AI engineering capabilities
 
-By the end of this course, students will be able to:
-	1.	Implement and train foundational model architectures using PyTorch.
-	2.	Apply LoRA, PEFT, and evaluation metrics for efficient fine-tuning.
-	3.	Serve large models using VLLM and containerized inference stacks.
-	4.	Integrate vector search, embeddings, and hybrid retrieval.
-	5.	Add visual reasoning and apply guardrails for safe, robust systems.
-	6.	Build production-ready MLOps workflows with CI/CD and monitoring.
-	7.	Document, deploy, and present AI projects for professional hiring.
+---
 
-⸻
+## 📚 Curriculum Structure
 
-Assessment
-	•	Projects (70%): Six core modules with GitHub repos and written guides.
-	•	Capstone (20%): End-to-end application with code, deployment, and job-facing writeup.
-	•	Public Log (10%): Journal entries, blog posts, and engagement.
+### Phase 1: Foundation (Weeks 1-10)
 
-⸻
+| Week | Module | Core Deliverable | Skills Developed |
+|------|--------|------------------|------------------|
+| **1** | **Orientation & Setup** | Development environment, learning roadmap | Professional tooling, project planning |
+| **2-4** | **Transformer Implementation** | GPT model built from scratch in PyTorch | Neural architecture, attention mechanisms, backpropagation |
+| **5-7** | **Domain Fine-Tuning** | Specialized model with LoRA training pipeline | Transfer learning, parameter-efficient training, evaluation metrics |
+| **8-10** | **LLM Serving Infrastructure** | Containerized FastAPI service with streaming | API design, containerization, performance optimization |
 
-Resources
-	•	Tooling: PyTorch, Transformers (Hugging Face), VLLM, LangChain, ChromaDB, Triton, Docker, Kubernetes, Grafana, FastAPI.
-	•	Environment: GitHub, VS Code, Colab/Modal, local GPUs or cloud credits.
-	•	Content Access: All modules published freely at danielkliewer.com/genai-course.
+### Phase 2: Advanced Systems (Weeks 11-19)
 
-⸻
+| Week | Module | Core Deliverable | Skills Developed |
+|------|--------|------------------|------------------|
+| **11-13** | **RAG & Vector Search** | Multi-source retrieval system with Qdrant | Embedding strategies, vector databases, hybrid search |
+| **14-16** | **Multimodal AI & Safety** | Vision-language model with content filtering | Cross-modal reasoning, safety engineering, guardrails |
+| **17-19** | **MLOps & Monitoring** | Complete ML pipeline with Kubeflow and observability | CI/CD for ML, monitoring, model governance |
 
-Prerequisites
-	•	Intermediate Python (functions, classes, data structures)
-	•	Basic Linux CLI, Git, Docker
-	•	Familiarity with React/Next.js is helpful for full-stack deployment
+### Phase 3: Capstone & Career Prep (Weeks 20-24)
 
-⸻
+| Week | Focus | Deliverable | Outcome |
+|------|-------|-------------|---------|
+| **20-22** | **Capstone Development** | End-to-end production system | Integration of all learned concepts |
+| **23-24** | **Portfolio & Presentation** | Professional portfolio site, technical presentations | Career readiness, communication skills |
 
-Instructor Note
+---
 
-This course is self-paced and based entirely on my personal journey becoming a Gen-AI engineer from scratch. I publish everything I learn, try, break, and fix, so you can follow along, fork the repos, or contribute to the open syllabus.
+## 🔧 Technical Stack & Tools
 
-⸻
+### Core Technologies
+- **ML Frameworks:** PyTorch, Transformers (Hugging Face), PEFT, ONNX
+- **Serving & APIs:** FastAPI, VLLM, Triton Inference Server, Gradio
+- **Vector & Databases:** ChromaDB, Qdrant, PostgreSQL with pgvector
+- **MLOps:** Kubeflow, MLflow, Weights & Biases, DVC
+- **Infrastructure:** Docker, Kubernetes, Terraform, AWS/GCP
+- **Monitoring:** Prometheus, Grafana, ELK Stack
+- **Frontend:** React, Next.js, Streamlit
 
-License
-	•	Content: CC BY-SA 4.0
-	•	Code: MIT License
+### Development Environment
+- **Code Management:** GitHub with automated CI/CD workflows
+- **IDEs:** VS Code with AI extensions, Jupyter Lab
+- **Compute:** Local development + cloud credits (Modal, RunPod, or major cloud providers)
+- **Collaboration:** Discord community, peer code reviews
+
+---
+
+## 📊 Assessment Framework
+
+### Project Portfolio (70%)
+Each module requires three deliverables:
+1. **Working System** — Fully functional implementation with comprehensive testing
+2. **Technical Documentation** — Architecture diagrams, API docs, deployment guides
+3. **Reflective Analysis** — Blog-style writeup covering design decisions, challenges, and learnings
+
+**Grading Criteria:**
+- Code quality and best practices (25%)
+- System functionality and performance (25%)
+- Documentation clarity and completeness (25%)
+- Technical depth and innovation (25%)
+
+### Capstone Project (20%)
+Students design and implement an original Gen-AI system addressing a real-world problem:
+- **Technical Implementation** — Novel integration of course concepts
+- **Production Deployment** — Publicly accessible system with monitoring
+- **Professional Presentation** — Technical talk and comprehensive documentation
+- **Business Case** — Problem analysis and solution justification
+
+### Professional Development (10%)
+- **Learning Journal** — Weekly reflections on technical growth and challenges
+- **Community Engagement** — Code reviews, forum participation, knowledge sharing
+- **Technical Writing** — Blog posts explaining complex concepts to diverse audiences
+
+---
+
+## 📋 Prerequisites & Preparation
+
+### Required Skills
+- **Python Proficiency:** Object-oriented programming, data structures, async/await patterns
+- **Linux/Command Line:** File management, process control, shell scripting basics
+- **Version Control:** Git workflows, branching strategies, collaborative development
+- **Web Fundamentals:** HTTP/REST APIs, JSON, basic networking concepts
+
+### Recommended Background
+- **Machine Learning Basics:** Understanding of gradient descent, loss functions, evaluation metrics
+- **Web Development:** React/Next.js for full-stack projects (can be learned concurrently)
+- **Cloud Platforms:** Basic familiarity with AWS, GCP, or Azure services
+- **Database Knowledge:** SQL fundamentals, understanding of NoSQL concepts
+
+### Pre-Course Setup Checklist
+- [ ] Development environment with Python 3.9+, Docker, and VS Code
+- [ ] GitHub account with SSH keys configured
+- [ ] Cloud platform account with API access (free tier sufficient initially)
+- [ ] Hardware: 16GB+ RAM recommended, GPU access preferred but not required
+
+---
+
+## 🌟 Course Philosophy & Methodology
+
+### Learning by Building
+Every concept is introduced through practical implementation. Students don't just learn about transformers—they build one from scratch. They don't just study RAG—they architect a production-ready retrieval system. This approach ensures deep understanding and practical capability.
+
+### Industry Simulation
+Projects mirror real-world engineering scenarios:
+- **Code Reviews:** Peer and instructor feedback on technical implementation
+- **Architecture Decisions:** Justifying technology choices and trade-offs
+- **Performance Optimization:** Measuring and improving system efficiency
+- **Documentation Standards:** Creating maintainable, professional-grade documentation
+
+### Open Source Commitment
+All course materials, code repositories, and student projects are open source. This transparency enables:
+- Community-driven improvements to course content
+- Public portfolio demonstration for career advancement
+- Collaborative learning and peer mentorship
+- Real-world experience with open source contribution workflows
+
+---
+
+## 📚 Resources & Support
+
+### Course Materials
+- **Primary Content:** Interactive modules at `danielkliewer.com/genai-course`
+- **Code Repositories:** Starter templates and reference implementations
+- **Video Lectures:** Technical deep-dives and live coding sessions
+- **Reading List:** Curated papers, blog posts, and technical documentation
+
+### Community & Support
+- **Discord Server:** Real-time help, peer collaboration, and study groups
+- **Office Hours:** Weekly instructor-led Q&A and code review sessions
+- **Study Groups:** Self-organized cohorts for collaborative learning
+- **Industry Mentorship:** Optional pairing with working Gen-AI engineers
+
+### Technical Resources
+- **Compute Credits:** $200 cloud credits provided per student
+- **Software Licenses:** Educational access to premium development tools
+- **Dataset Access:** Curated datasets for training and evaluation
+- **Model Hub:** Pre-trained models and checkpoints for experimentation
+
+---
+
+## 👨‍💻 About the Instructor
+
+This course represents a complete documentation of my journey from traditional software engineering to Gen-AI specialization. Rather than presenting polished theoretical content, I share the actual process of learning, experimenting, failing, and iterating that characterizes real engineering work.
+
+**Philosophy:** The best way to learn engineering is by following someone who's learning it too. All my experiments, dead ends, and breakthroughs are documented with full transparency, creating an authentic roadmap for others to follow.
+
+**Commitment:** Every line of code, every architectural decision, and every lesson learned is published openly. Students aren't just taking a course—they're participating in a live documentation of professional growth in one of technology's fastest-moving fields.
+
+---
+
+## 📄 Licensing & Usage
+
+### Content License
+**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
+- Share and adapt course materials freely
+- Provide attribution to original source
+- Share derivatives under same license
+
+### Code License
+**MIT License**
+- Use, modify, and distribute code without restriction
+- Include original copyright notice
+- No warranty or liability
+
+### Student Work
+Students retain full ownership of their projects while granting permission for course showcase and community learning purposes.
+
+---
+
+## 🚀 Getting Started
+
+### Immediate Next Steps
+1. **Join the Community:** Discord server for peer connection and support
+2. **Environment Setup:** Follow the technical setup guide and verify all tools
+3. **Baseline Assessment:** Complete the pre-course skills evaluation
+4. **Project Planning:** Define personal learning goals and career objectives
+
+### Success Metrics
+By week 4, you should be able to explain transformer architecture to a technical colleague. By week 12, you should have a deployed AI service handling real user requests. By week 24, you should be ready to interview for Gen-AI engineering positions with a portfolio that demonstrates comprehensive full-stack capabilities.
+
+**Ready to build the future of AI? Let's get started.**
