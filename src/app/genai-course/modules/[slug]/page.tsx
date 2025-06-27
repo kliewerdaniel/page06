@@ -2,6 +2,14 @@ import { allModuleDocs } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import { serialize } from 'next-mdx-remote/serialize';
 import MarkdownRenderer from '@/components/markdown-renderer';
+import { InfoBlock, SectionTitle, SubSectionTitle, ChecklistItem } from '@/app/genai-course/components';
+
+const customComponents = {
+  InfoBlock,
+  SectionTitle,
+  SubSectionTitle,
+  ChecklistItem,
+};
 
 interface ModulePageProps {
   params: Promise<{
@@ -30,7 +38,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
       <h1 className="text-4xl font-bold mb-6">{currentModule.title}</h1>
       <p className="text-lg mb-4">Weeks: {currentModule.weeks}</p>
       <p className="text-md mb-8">Status: {currentModule.status}</p>
-      <MarkdownRenderer source={mdxSource} />
+      <MarkdownRenderer source={mdxSource} components={customComponents} />
       <p className="text-lg mt-8 mb-8">
         This course is offered completely free of charge! If you find value in this content and would like to support the creator, you can{' '}
         <a href="https://www.paypal.com/ncp/payment/H4FUU55N9V7CW" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">

@@ -5,47 +5,43 @@ status: "draft"
 type: "ModuleDoc"
 ---
 
-**Duration:** Week 1  
-**Status:** Active  
-**Type:** Foundation Module  
+import { InfoBlock, SectionTitle, SubSectionTitle, ChecklistItem } from "@/app/genai-course/components";
 
----
+<InfoBlock title="Module Overview">
+  **Duration:** Week 1  
+  **Status:** Active  
+  **Type:** Foundation Module  
 
-## 🎯 Module Overview
+  Welcome to your transformation from developer to Gen-AI engineer. This foundational week establishes your professional development environment, clarifies the Gen-AI engineering role, and creates your personalized learning roadmap. You'll emerge with a clear understanding of where you're headed and all the tools needed to get there.
 
-Welcome to your transformation from developer to Gen-AI engineer. This foundational week establishes your professional development environment, clarifies the Gen-AI engineering role, and creates your personalized learning roadmap. You'll emerge with a clear understanding of where you're headed and all the tools needed to get there.
+  **The Big Question:** What exactly does a Gen-AI engineer do that's different from a traditional ML engineer or software developer?
 
-**The Big Question:** What exactly does a Gen-AI engineer do that's different from a traditional ML engineer or software developer?
+  By the end of this week, you'll have a concrete answer backed by hands-on experience with the tools, workflows, and thinking patterns that define this emerging discipline.
+</InfoBlock>
 
-By the end of this week, you'll have a concrete answer backed by hands-on experience with the tools, workflows, and thinking patterns that define this emerging discipline.
-
----
-
-## 📚 Learning Objectives
+<SectionTitle>📚 Learning Objectives</SectionTitle>
 
 By completing this module, you will be able to:
 
-### Professional Understanding
+<SubSectionTitle>Professional Understanding</SubSectionTitle>
 - **Define the Gen-AI engineering role** and distinguish it from related positions (ML Engineer, Data Scientist, AI Researcher)
 - **Map the Gen-AI technology landscape** including key players, tools, and architectural patterns
 - **Identify career pathways** and specialization opportunities within Gen-AI engineering
 
-### Technical Setup
+<SubSectionTitle>Technical Setup</SubSectionTitle>
 - **Configure a professional development environment** optimized for AI/ML development
 - **Establish version control workflows** using Git and GitHub with industry best practices
 - **Set up cloud computing resources** for scalable model training and deployment
 - **Implement monitoring and logging** from day one of development
 
-### Strategic Planning
+<SubSectionTitle>Strategic Planning</SubSectionTitle>
 - **Create a personalized learning roadmap** aligned with your career goals and timeline
 - **Design a project portfolio strategy** that demonstrates progressive skill development
 - **Establish professional networking** within the Gen-AI community
 
----
+<SectionTitle>🛠 Core Deliverables</SectionTitle>
 
-## 🛠 Core Deliverables
-
-### 1. Professional Development Environment
+<SubSectionTitle>1. Professional Development Environment</SubSectionTitle>
 **Deliverable:** Fully configured development setup with documentation
 
 **Components:**
@@ -55,12 +51,12 @@ By completing this module, you will be able to:
 - **Monitoring Stack:** Basic logging and metrics collection setup
 
 **Success Criteria:**
-- [ ] Can run PyTorch training scripts locally
-- [ ] Docker containers build and deploy successfully
-- [ ] Git workflows include automated testing and documentation
-- [ ] Cloud resources accessible via CLI and Python SDK
+- <ChecklistItem>Can run PyTorch training scripts locally</ChecklistItem>
+- <ChecklistItem>Docker containers build and deploy successfully</ChecklistItem>
+- <ChecklistItem>Git workflows include automated testing and documentation</ChecklistItem>
+- <ChecklistItem>Cloud resources accessible via CLI and Python SDK</ChecklistItem>
 
-### 2. Personal Learning Roadmap
+<SubSectionTitle>2. Personal Learning Roadmap</SubSectionTitle>
 **Deliverable:** Strategic 24-week learning plan with milestones
 
 **Components:**
@@ -70,12 +66,12 @@ By completing this module, you will be able to:
 - **Portfolio Strategy:** Project selection aligned with career objectives
 
 **Success Criteria:**
-- [ ] Clear understanding of starting point and destination
-- [ ] Realistic timeline with achievable weekly milestones
-- [ ] Alignment between projects and target job requirements
-- [ ] Accountability mechanisms and progress tracking
+- <ChecklistItem>Clear understanding of starting point and destination</ChecklistItem>
+- <ChecklistItem>Realistic timeline with achievable weekly milestones</ChecklistItem>
+- <ChecklistItem>Alignment between projects and target job requirements</ChecklistItem>
+- <ChecklistItem>Accountability mechanisms and progress tracking</ChecklistItem>
 
-### 3. Gen-AI Engineering Landscape Analysis
+<SubSectionTitle>3. Gen-AI Engineering Landscape Analysis</SubSectionTitle>
 **Deliverable:** Comprehensive industry analysis and role definition
 
 **Components:**
@@ -85,16 +81,14 @@ By completing this module, you will be able to:
 - **Company Landscape:** Key players and their technology approaches
 
 **Success Criteria:**
-- [ ] Can articulate what makes Gen-AI engineering unique
-- [ ] Understands technology choices and trade-offs
-- [ ] Identifies target companies and role opportunities
-- [ ] Recognizes industry trends and emerging technologies
+- <ChecklistItem>Can articulate what makes Gen-AI engineering unique</ChecklistItem>
+- <ChecklistItem>Understand technology choices and trade-offs</ChecklistItem>
+- <ChecklistItem>Identifies target companies and role opportunities</ChecklistItem>
+- <ChecklistItem>Recognizes industry trends and emerging technologies</ChecklistItem>
 
----
+<SectionTitle>📖 Content Breakdown</SectionTitle>
 
-## 📖 Content Breakdown
-
-### Day 1-2: The Gen-AI Engineering Role
+<SubSectionTitle>Day 1-2: The Gen-AI Engineering Role</SubSectionTitle>
 **What You'll Learn:**
 - Evolution from traditional software development to AI-first engineering
 - The intersection of software engineering, ML operations, and product development
@@ -107,7 +101,7 @@ By completing this module, you will be able to:
 
 **Deliverable:** Role definition document with personal career positioning
 
-### Day 3-4: Development Environment Setup
+<SubSectionTitle>Day 3-4: Development Environment Setup</SubSectionTitle>
 **What You'll Learn:**
 - Professional Python development with virtual environments and dependency management
 - Docker containerization for reproducible AI/ML workflows
@@ -122,7 +116,7 @@ By completing this module, you will be able to:
 
 **Deliverable:** Working development environment with documentation
 
-### Day 5-6: Technology Landscape Mapping
+<SubSectionTitle>Day 5-6: Technology Landscape Mapping</SubSectionTitle>
 **What You'll Learn:**
 - Current state of Gen-AI tooling and frameworks
 - Architectural patterns in production AI systems
@@ -137,7 +131,7 @@ By completing this module, you will be able to:
 
 **Deliverable:** Technology landscape report with hands-on experience notes
 
-### Day 7: Strategic Planning & Community Integration
+<SubSectionTitle>Day 7: Strategic Planning & Community Integration</SubSectionTitle>
 **What You'll Learn:**
 - How to create an effective learning plan for rapidly evolving technology
 - Portfolio development strategy for career advancement
@@ -152,13 +146,11 @@ By completing this module, you will be able to:
 
 **Deliverable:** Complete learning roadmap and professional networking plan
 
----
+<SectionTitle>🔧 Technical Setup Guide</SectionTitle>
 
-## 🔧 Technical Setup Guide
+<SubSectionTitle>Required Software Installation</SubSectionTitle>
 
-### Required Software Installation
-
-#### Core Development Tools
+<SubSectionTitle>Core Development Tools</SubSectionTitle>
 ```bash
 # Python environment
 pyenv install 3.11.8
@@ -176,7 +168,7 @@ code --install-extension ms-vscode.vscode-docker
 code --install-extension GitHub.copilot
 ```
 
-#### AI/ML Specific Tools
+<SubSectionTitle>AI/ML Specific Tools</SubSectionTitle>
 ```bash
 # Core libraries
 pip install torch torchvision transformers
@@ -190,13 +182,13 @@ pip install pytest pytest-cov jupyter ipython
 pip install rich typer click
 ```
 
-#### Cloud Platform Setup
+<SubSectionTitle>Cloud Platform Setup</SubSectionTitle>
 - **AWS:** Configure CLI with IAM user and basic permissions
 - **GCP:** Set up service account with AI Platform access
 - **Azure:** Configure CLI with subscription and resource group
 - **Modal/RunPod:** Account setup with API key configuration
 
-### Environment Validation Script
+<SubSectionTitle>Environment Validation Script</SubSectionTitle>
 ```python
 #!/usr/bin/env python3
 """
@@ -260,11 +252,9 @@ if __name__ == "__main__":
     print("\n🎉 Environment validation complete!")
 ```
 
----
+<SectionTitle>📊 Assessment Criteria</SectionTitle>
 
-## 📊 Assessment Criteria
-
-### Development Environment (40%)
+<SubSectionTitle>Development Environment (40%)</SubSectionTitle>
 **Exceptional (A):**
 - All tools installed and properly configured
 - Custom aliases, shortcuts, and productivity enhancements
@@ -283,7 +273,7 @@ if __name__ == "__main__":
 - Some cloud services accessible
 - Documentation covers main setup steps
 
-### Learning Roadmap (35%)
+<SubSectionTitle>Learning Roadmap (35%)</SubSectionTitle>
 **Exceptional (A):**
 - Detailed weekly milestones with measurable outcomes
 - Clear connection between activities and career objectives
@@ -302,7 +292,7 @@ if __name__ == "__main__":
 - General career direction established
 - Limited detail on specific activities
 
-### Industry Analysis (25%)
+<SubSectionTitle>Industry Analysis (25%)</SubSectionTitle>
 **Exceptional (A):**
 - Comprehensive comparison of roles with specific examples
 - Deep dive into technology choices with trade-off analysis
@@ -321,69 +311,63 @@ if __name__ == "__main__":
 - Minimal industry trend awareness
 - Unclear career positioning
 
----
+<SectionTitle>🔗 Resources & Further Reading</SectionTitle>
 
-## 🔗 Resources & Further Reading
-
-### Essential Reading
+<SubSectionTitle>Essential Reading</SubSectionTitle>
 - **"The AI Engineer's Handbook"** - Emerging best practices and career paths
 - **"Building LLM Applications"** - O'Reilly guide to production AI systems
 - **Industry Reports:** State of AI, Gradient Flow surveys, Andreessen Horowitz AI trends
 
-### Key Communities
+<SubSectionTitle>Key Communities</SubSectionTitle>
 - **Discord:** Join the course community server for peer support
 - **GitHub:** Follow AI engineering projects and contribute to open source
 - **Twitter/X:** Follow @AIEngineering, @huggingface, @LangChainAI
 - **LinkedIn:** Join "AI Engineers" and "LLM Developers" groups
 
-### Technical Documentation
+<SubSectionTitle>Technical Documentation</SubSectionTitle>
 - **Hugging Face Hub:** Model cards, datasets, and implementation examples
 - **LangChain Docs:** Patterns for building LLM applications
 - **Vector Database Guides:** Pinecone, Qdrant, Chroma documentation
 - **Cloud AI Services:** AWS Bedrock, GCP Vertex AI, Azure OpenAI
 
-### Career Resources
+<SubSectionTitle>Career Resources</SubSectionTitle>
 - **Job Boards:** AngelList, Wellfound, AI Jobs, RemoteOK
 - **Salary Data:** levels.fyi, Glassdoor, PayScale
 - **Interview Prep:** LeetCode AI/ML section, Pramp system design
 
----
-
-## 🎯 Week 1 Success Checklist
+<SectionTitle>🎯 Week 1 Success Checklist</SectionTitle>
 
 By the end of Week 1, you should be able to check off each item:
 
-### Technical Setup
-- [ ] Python 3.11+ with virtual environment management
-- [ ] Docker installed and running simple containers
-- [ ] VS Code configured with AI/ML extensions
-- [ ] Git configured with SSH keys and GPG signing
-- [ ] Cloud platform CLI tools installed and authenticated
-- [ ] Basic monitoring and logging tools configured
+<SubSectionTitle>Technical Setup</SubSectionTitle>
+- <ChecklistItem>Python 3.11+ with virtual environment management</ChecklistItem>
+- <ChecklistItem>Docker installed and running simple containers</ChecklistItem>
+- <ChecklistItem>VS Code configured with AI/ML extensions</ChecklistItem>
+- <ChecklistItem>Git configured with SSH keys and GPG signing</ChecklistItem>
+- <ChecklistItem>Cloud platform CLI tools installed and authenticated</ChecklistItem>
+- <ChecklistItem>Basic monitoring and logging tools configured</ChecklistItem>
 
-### Professional Development
-- [ ] LinkedIn profile updated with Gen-AI engineering focus
-- [ ] GitHub profile with clear project organization
-- [ ] Professional development plan for the next 24 weeks
-- [ ] Network connections made in the AI/ML community
-- [ ] RSS feeds and learning resources organized
+<SubSectionTitle>Professional Development</SubSectionTitle>
+- <ChecklistItem>LinkedIn profile updated with Gen-AI engineering focus</ChecklistItem>
+- <ChecklistItem>GitHub profile with clear project organization</ChecklistItem>
+- <ChecklistItem>Professional development plan for the next 24 weeks</ChecklistItem>
+- <ChecklistItem>Network connections made in the AI/ML community</ChecklistItem>
+- <ChecklistItem>RSS feeds and learning resources organized</ChecklistItem>
 
-### Knowledge & Understanding
-- [ ] Can explain what a Gen-AI engineer does in 2 minutes
-- [ ] Understands the difference between Gen-AI and traditional ML roles
-- [ ] Familiar with major tools in the Gen-AI ecosystem
-- [ ] Aware of current industry trends and key players
-- [ ] Clear vision of career trajectory and next steps
+<SubSectionTitle>Knowledge & Understanding</SubSectionTitle>
+- <ChecklistItem>Can explain what a Gen-AI engineer does in 2 minutes</ChecklistItem>
+- <ChecklistItem>Understand the difference between Gen-AI and traditional ML roles</ChecklistItem>
+- <ChecklistItem>Familiar with major tools in the Gen-AI ecosystem</ChecklistItem>
+- <ChecklistItem>Aware of current industry trends and key players</ChecklistItem>
+- <ChecklistItem>Clear vision of career trajectory and next steps</ChecklistItem>
 
-### Documentation & Portfolio
-- [ ] GitHub repository with course project structure
-- [ ] Personal learning log with Week 1 reflections
-- [ ] Environment setup documentation for reproducibility
-- [ ] Initial blog post: "My Journey to Gen-AI Engineering"
+<SubSectionTitle>Documentation & Portfolio</SubSectionTitle>
+- <ChecklistItem>GitHub repository with course project structure</ChecklistItem>
+- <ChecklistItem>Personal learning log with Week 1 reflections</ChecklistItem>
+- <ChecklistItem>Environment setup documentation for reproducibility</ChecklistItem>
+- <ChecklistItem>Initial blog post: "My Journey to Gen-AI Engineering"</ChecklistItem>
 
----
-
-## 🚀 What's Next?
+<SectionTitle>🚀 What's Next?</SectionTitle>
 
 **Week 2 Preview: Implementing Transformers from Scratch**
 
@@ -398,7 +382,3 @@ With your environment configured and career vision clarified, Week 2 dives deep 
 **Success Metric:** By Week 2's end, you'll have a working transformer that can generate coherent text, trained on a dataset of your choice, with every line of code written and understood by you.
 
 Ready to build the future of AI? Your journey starts now.
-
----
-
-*Need help? Join our Discord community or check the troubleshooting guide in the course repository.*

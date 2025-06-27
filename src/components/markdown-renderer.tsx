@@ -5,7 +5,7 @@ import React from "react";
 
 interface MarkdownRendererProps {
   source: MDXRemoteSerializeResult;
-  components?: Record<string, React.ComponentType>;
+  components?: Record<string, React.ComponentType<any>>;
 }
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ source, components }) => {
