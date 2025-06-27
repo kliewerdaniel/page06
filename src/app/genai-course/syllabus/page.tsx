@@ -20,11 +20,11 @@ export default async function SyllabusPage() {
   }
 
   const customComponents: Record<string, React.ComponentType<any>> = {
-    InfoBlock,
-    SectionTitle,
-    SubSectionTitle,
-    CustomTable,
-    ChecklistItem,
+    InfoBlock: InfoBlock as React.ComponentType<any>,
+    SectionTitle: SectionTitle as React.ComponentType<any>,
+    SubSectionTitle: SubSectionTitle as React.ComponentType<any>,
+    CustomTable: CustomTable as React.ComponentType<any>,
+    ChecklistItem: ChecklistItem as React.ComponentType<any>,
     // You can also override default HTML elements if needed, e.g.,
     // h1: (props) => <h1 className="text-5xl font-extrabold my-8" {...props} />,
     // table: CustomTable, // This line would be used if you wanted to replace all <table> tags
