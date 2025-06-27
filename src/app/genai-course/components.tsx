@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 
 export const InfoBlock: React.FC<{ title?: string; children: React.ReactNode }> = ({ title, children }) => (
