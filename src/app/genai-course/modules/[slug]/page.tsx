@@ -11,13 +11,13 @@ interface ModulePageProps {
 
 export default async function ModulePage({ params }: ModulePageProps) {
   const resolvedParams = await params;
-  const module = allModuleDocs.find((doc) => doc.slug === resolvedParams.slug);
+  const currentModule = allModuleDocs.find((doc) => doc.slug === resolvedParams.slug);
 
-  if (!module) {
+  if (!currentModule) {
     notFound();
   }
 
-  const mdxSource = await serialize(module.body.raw, {
+  const mdxSource = await serialize(currentModule.body.raw, {
     // You might need to configure options here if you have custom MDX components or processing
   });
 
@@ -27,9 +27,9 @@ export default async function ModulePage({ params }: ModulePageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">{module.title}</h1>
-      <p className="text-lg mb-4">Weeks: {module.weeks}</p>
-      <p className="text-md mb-8">Status: {module.status}</p>
+      <h1 className="text-4xl font-bold mb-6">{currentModule.title}</h1>
+      <p className="text-lg mb-4">Weeks: {currentModule.weeks}</p>
+      <p className="text-md mb-8">Status: {currentModule.status}</p>
       <MarkdownRenderer source={mdxSource} />
     </div>
   );
