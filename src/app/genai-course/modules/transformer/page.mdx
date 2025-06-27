@@ -4,4 +4,817 @@ weeks: "2-4"
 status: "draft"
 type: "ModuleDoc"
 ---
-TODO: Add overview, learning objectives, and links to deliverables.
+
+## Module 1: Implementing Transformers from Scratch
+
+<InfoBlock title="Overview">
+This module provides a comprehensive introduction to the Transformer architecture, a foundational model in modern natural language processing. You will delve into the core components of Transformers, including self-attention mechanisms, multi-head attention, positional encoding, and the encoder-decoder structure. The module emphasizes hands-on implementation, guiding you through building a Transformer model from scratch using a deep learning framework. By the end of this module, you will have a solid understanding of how Transformers work and the practical skills to implement them.
+</InfoBlock>
+
+## Learning Objectives
+
+Upon completion of this module, you will be able to:
+  <ChecklistItem>Understand the core concepts of the Transformer architecture.</ChecklistItem>
+  <ChecklistItem>Explain the purpose and function of self-attention and multi-head attention.</ChecklistItem>
+  <ChecklistItem>Implement positional encoding and integrate it into a Transformer model.</ChecklistItem>
+  <ChecklistItem>Build a complete Transformer encoder-decoder model from scratch.</ChecklistItem>
+  <ChecklistItem>Apply the Transformer model to a sequence-to-sequence task.</ChecklistItem>
+  <ChecklistItem>Debug and optimize Transformer implementations for performance.</ChecklistItem>
+
+## Deliverables
+
+### Deliverable 1: Transformer Core Components
+<InfoBlock>
+Implement the self-attention and multi-head attention mechanisms. Provide unit tests to ensure correctness.
+</InfoBlock>
+
+### Deliverable 2: Positional Encoding and Encoder Block
+<InfoBlock>
+Implement positional encoding and integrate it with the self-attention mechanism to create a full Transformer encoder block.
+</InfoBlock>
+
+### Deliverable 3: Complete Transformer Model
+<InfoBlock>
+Assemble the encoder and decoder blocks to form a complete Transformer model. Train the model on a simple sequence-to-sequence dataset (e.g., translation or text summarization) and report its performance.
+</InfoBlock>
+
+## Weeks 2-4: Transformer Implementation
+
+### Building GPT from Mathematical Foundations
+
+**Duration:** Weeks 2-4 (3 weeks)  
+**Status:** Active  
+**Type:** Core Technical Module  
+**Prerequisites:** Week 1 completed, Python/PyTorch basics, linear algebra fundamentals
+
+### 🎯 Module Overview
+
+This is where theory meets reality. You'll implement a complete GPT-style transformer from scratch, building every component from mathematical first principles. No black boxes, no pre-built modules—just pure understanding through implementation.
+
+**The Challenge:** Can you build a language model that generates coherent text using only PyTorch primitives and mathematical operations?
+
+By module completion, you'll have created a working transformer that can be trained on any text dataset, generate human-like text, and serve as the foundation for all future projects. More importantly, you'll understand exactly *how* modern LLMs work under the hood.
+
+**Why This Matters:** Every Gen-AI engineer needs deep transformer understanding. When production systems fail, when fine-tuning goes wrong, when performance optimization is needed—you'll be the engineer who can debug at the mathematical level.
+
+### 📚 Learning Objectives
+
+By completing this module, you will be able to:
+
+### Mathematical Foundations
+
+  * Implement multi-head attention from matrix operations with complete mathematical understanding
+  * Design positional encoding schemes and understand their impact on model performance
+  * Build layer normalization and residual connections with numerical stability considerations
+  * Construct autoregressive generation with proper masking and sampling strategies
+
+### Software Engineering
+
+  * Architect modular neural network code following software engineering best practices
+  * Implement efficient training loops with gradient accumulation, mixed precision, and monitoring
+  * Design reproducible experiments with proper seed management and hyperparameter tracking
+  * Create comprehensive testing suites for each model component
+
+### Model Training & Optimization
+
+  * Configure training hyperparameters based on theoretical understanding and empirical evidence
+  * Implement learning rate scheduling and optimization strategies for stable training
+  * Design evaluation metrics that correlate with downstream task performance
+  * Debug training instabilities using gradient analysis and loss curve interpretation
+
+### Production Readiness
+
+  * Optimize inference speed through batching, caching, and memory management
+  * Implement model serialization with proper versioning and backward compatibility
+  * Create interactive demos that showcase model capabilities to non-technical audiences
+  * Document architectural decisions with clear rationale for future maintenance
+
+## 🛠 Core Deliverables
+
+### 1\. Transformer Architecture Implementation
+
+**Deliverable:** Complete GPT model implemented from PyTorch primitives
+
+**Components:**
+
+  * **Attention Mechanism:** Multi-head self-attention with mathematical transparency
+  * **Feed-Forward Networks:** MLP blocks with configurable activation functions
+  * **Layer Components:** Normalization, residual connections, dropout implementation
+  * **Model Architecture:** Configurable transformer with variable depth and width
+
+**Technical Requirements:**
+
+```python
+class GPTTransformer(nn.Module):
+    """
+    GPT-style transformer implemented from scratch
+    Must support:
+    - Configurable model size (d_model, n_heads, n_layers)
+    - Causal masking for autoregressive generation
+    - Gradient checkpointing for memory efficiency
+    - KV caching for fast inference
+    """
+    def __init__(self, vocab_size, d_model, n_heads, n_layers, max_seq_len):
+        # Your implementation here
+        pass
+    
+    def forward(self, x, use_cache=False):
+        # Forward pass with optional caching
+        pass
+    
+    def generate(self, prompt, max_length, temperature=1.0):
+        # Text generation with sampling strategies
+        pass
+```
+
+**Success Criteria:**
+  * `[ ]` Model trains successfully on small datasets (Shakespeare, Wikipedia)
+  * `[ ]` Generates coherent text samples at multiple temperature settings
+  * `[ ]` Passes mathematical correctness tests for each component
+  * `[ ]` Achieves competitive perplexity scores on validation data
+  * `[ ]` Includes comprehensive documentation with mathematical derivations
+
+### 2\. Training Infrastructure & Experimentation
+
+**Deliverable:** Production-ready training system with experiment tracking
+
+**Components:**
+
+  * **Training Loop:** Efficient implementation with gradient accumulation and mixed precision
+  * **Data Pipeline:** Tokenization, batching, and streaming for large datasets
+  * **Experiment Tracking:** Integration with Weights & Biases for reproducible experiments
+  * **Model Checkpointing:** Save/resume functionality with optimizer state management
+
+**Technical Requirements:**
+
+```python
+class TransformerTrainer:
+    """
+    Training infrastructure for transformer models
+    Features:
+    - Gradient accumulation for large effective batch sizes
+    - Learning rate scheduling with warmup
+    - Automatic mixed precision training
+    - Distributed training support (optional)
+    """
+    def __init__(self, model, train_loader, val_loader, config):
+        self.model = model
+        self.optimizer = self.configure_optimizer(config)
+        self.scheduler = self.configure_scheduler(config)
+        self.scaler = GradScaler()  # For mixed precision
+        
+    def train_epoch(self):
+        # Training loop with all optimizations
+        pass
+        
+    def evaluate(self):
+        # Comprehensive evaluation with multiple metrics
+        pass
+```
+
+**Success Criteria:**
+
+  * `[ ]` Training runs stable for 100+ epochs without divergence
+  * `[ ]` Supports datasets of 1M+ tokens with efficient memory usage
+  * `[ ]` Experiment tracking captures all hyperparameters and metrics
+  * `[ ]` Model checkpoints can be loaded and resume training seamlessly
+  * `[ ]` Training speed comparable to reference implementations
+
+### 3\. Comprehensive Analysis & Blog Post
+
+**Deliverable:** Technical deep-dive explaining implementation and insights
+
+**Components:**
+
+  * **Mathematical Derivations:** Step-by-step explanation of attention mechanism
+  * **Implementation Walkthrough:** Code explanation with design decision rationale
+  * **Experimental Results:** Training curves, generated samples, ablation studies
+  * **Performance Analysis:** Speed benchmarks, memory usage, scaling characteristics
+
+**Content Structure:**
+
+  * **Introduction:** Why implement from scratch vs using libraries?
+  * **Mathematical Foundation:** Attention mechanism derived from first principles
+  * **Implementation Deep-dive:** Architecture decisions and code walkthrough
+  * **Training Experiments:** Dataset preparation, hyperparameter tuning, results
+  * **Generated Examples:** Showcasing model capabilities with diverse prompts
+  * **Lessons Learned:** Technical insights and practical advice
+  * **Open Questions:** Areas for future exploration
+  * **Writing Guidelines:**
+      * Balance technical depth with accessibility
+      * Include code snippets with clear explanations
+      * Use visualizations to illustrate complex concepts
+      * Share failures and debugging stories, not just successes
+      * Provide actionable advice for readers attempting similar projects
+  * **Success Metrics:**
+      * Technical accuracy verified by course community
+      * Clear explanations that help others understand transformers
+      * Code examples that run without modification
+      * Engaging narrative that maintains reader interest
+      * Professional quality suitable for portfolio inclusion
+  * **Deliverable:** Publication-ready blog post with complete project documentation
+
+## 📖 Weekly Breakdown
+
+### Week 2: Mathematical Foundations & Core Components
+
+### Day 1-2: Attention Mechanism Deep Dive
+
+  * **Learning Focus:** Understanding self-attention from first principles
+  * **Mathematical Foundation:**
+    `$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$`
+    Where:
+      * `$Q = XW\_Q$` (queries)
+      * `$K = XW\_K$` (keys)
+      * `$V = XW\_V$` (values)
+      * $X$ = input embeddings
+      * `$W\_Q, W\_K, W\_V \in \mathbb{R}^{d\_{\text{model}} \times d\_k}$`
+  * **Implementation Tasks:**
+      * Build single-head attention from matrix operations
+      * Add causal masking for autoregressive modeling
+      * Implement multi-head attention with parallel computation
+      * Add positional encoding (sinusoidal and learned variants)
+  * **Hands-on Activities:**
+      * Visualize attention patterns on simple sequences
+      * Compare different positional encoding schemes
+      * Debug attention weight distributions
+      * Test numerical stability with different sequence lengths
+  * **Deliverable:** Working attention module with visualization tools
+
+### Day 3-4: Transformer Block Architecture
+
+  * **Learning Focus:** Assembling attention into complete transformer blocks
+  * **Components to Implement:**
+      * Layer normalization (pre-norm vs post-norm)
+      * Residual connections with proper scaling
+      * Feed-forward networks with GELU activation
+      * Dropout for regularization
+  * **Implementation Tasks:**
+    ```python
+    class TransformerBlock(nn.Module):
+        def __init__(self, d_model, n_heads, d_ff, dropout=0.1):
+            super().__init__()
+            self.attention = MultiHeadAttention(d_model, n_heads)
+            self.norm1 = LayerNorm(d_model)
+            self.norm2 = LayerNorm(d_model)
+            self.ff = FeedForward(d_model, d_ff)
+            self.dropout = nn.Dropout(dropout)
+        
+        def forward(self, x, mask=None):
+            # Pre-norm architecture
+            attn_out = self.attention(self.norm1(x), mask=mask)
+            x = x + self.dropout(attn_out)
+            ff_out = self.ff(self.norm2(x))
+            x = x + self.dropout(ff_out)
+            return x
+    ```
+  * **Hands-on Activities:**
+      * Compare pre-norm vs post-norm architectures
+      * Experiment with different activation functions
+      * Implement gradient checkpointing for memory efficiency
+      * Profile memory usage and computation time
+  * **Deliverable:** Complete transformer block with performance optimizations
+
+### Day 5-7: Full Model Assembly & Testing
+
+  * **Learning Focus:** Building complete GPT architecture with proper initialization
+  * **Architecture Components:**
+      * Token embedding layer with vocabulary management
+      * Positional embedding (learned or sinusoidal)
+      * Stack of transformer blocks
+      * Output projection to vocabulary
+  * **Implementation Tasks:**
+      * Proper weight initialization (Xavier/Kaiming schemes)
+      * Gradient clipping and numerical stability
+      * Model sizing and memory estimation
+      * Comprehensive unit tests for each component
+  * **Testing Strategy:**
+    ```python
+    def test_attention_causality():
+        """Verify attention respects causal masking"""
+        model = MultiHeadAttention(d_model=512, n_heads=8)
+        x = torch.randn(1, 10, 512)  # batch=1, seq=10, d_model=512
+        
+        # Generate with and without future tokens
+        output1 = model(x[:, :5, :], causal=True)
+        output2 = model(x, causal=True)[:, :5, :]
+        
+        assert torch.allclose(output1, output2, atol=1e-6)
+
+    def test_model_generation():
+        """Verify model can generate coherent sequences"""
+        model = GPTTransformer(vocab_size=1000, d_model=256, n_heads=4, n_layers=6)
+        prompt = torch.randint(0, 1000, (1, 10))
+        
+        with torch.no_grad():
+            output = model.generate(prompt, max_length=50, temperature=0.8)
+        
+        assert output.shape == (1, 50)
+        assert not torch.any(torch.isnan(output))
+    ```
+  * **Deliverable:** Complete, tested GPT implementation ready for training
+
+### Week 3: Training Infrastructure & Data Pipeline
+
+### Day 8-9: Dataset Preparation & Tokenization
+
+  * **Learning Focus:** Building efficient data pipelines for language modeling
+  * **Data Pipeline Components:**
+      * Text preprocessing and cleaning
+      * Tokenization strategies (BPE, WordPiece, SentencePiece)
+      * Dataset batching and sequence packing
+      * Memory-efficient data loading
+  * **Implementation Tasks:**
+    ```python
+    class TextDataset(Dataset):
+        def __init__(self, text_file, tokenizer, seq_length=512):
+            self.tokenizer = tokenizer
+            self.seq_length = seq_length
+            
+            # Efficient text loading and tokenization
+            with open(text_file, 'r') as f:
+                text = f.read()
+            
+            self.tokens = tokenizer.encode(text)
+            self.length = len(self.tokens) - seq_length
+        
+        def __getitem__(self, idx):
+            # Return input and target sequences
+            return (
+                torch.tensor(self.tokens[idx:idx + self.seq_length]),
+                torch.tensor(self.tokens[idx + 1:idx + self.seq_length + 1])
+            )
+    ```
+  * **Datasets to Experiment With:**
+      * Shakespeare complete works (small scale, fast iteration)
+      * OpenWebText subset (medium scale, realistic data)
+      * Custom domain data (your choice: code, poetry, dialogue)
+  * **Hands-on Activities:**
+      * Compare different tokenization strategies on your data
+      * Analyze vocabulary coverage and out-of-vocabulary rates
+      * Implement efficient batching with padding/packing
+      * Profile data loading bottlenecks
+  * **Deliverable:** Optimized data pipeline with multiple dataset options
+
+### Day 10-11: Training Loop & Optimization
+
+  * **Learning Focus:** Implementing robust training with modern optimization techniques
+  * **Training Components:**
+      * AdamW optimizer with weight decay
+      * Learning rate scheduling (warmup + cosine decay)
+      * Gradient accumulation for large effective batch sizes
+      * Mixed precision training with automatic scaling
+  * **Implementation Tasks:**
+    ```python
+    class TrainingConfig:
+        # Model hyperparameters
+        d_model: int = 512
+        n_heads: int = 8
+        n_layers: int = 6
+        vocab_size: int = 10000
+        
+        # Training hyperparameters
+        batch_size: int = 32
+        gradient_accumulation_steps: int = 4
+        learning_rate: float = 3e-4
+        weight_decay: float = 0.1
+        max_epochs: int = 100
+        warmup_steps: int = 1000
+        
+        # Regularization
+        dropout: float = 0.1
+        gradient_clip: float = 1.0
+
+    def train_step(model, batch, optimizer, scaler, config):
+        """Single training step with mixed precision"""
+        inputs, targets = batch
+        
+        with autocast():
+            logits = model(inputs)
+            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+            loss = loss / config.gradient_accumulation_steps
+        
+        scaler.scale(loss).backward()
+        
+        if (step + 1) % config.gradient_accumulation_steps == 0:
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), config.gradient_clip)
+            scaler.step(optimizer)
+            scaler.update()
+            optimizer.zero_grad()
+        
+        return loss.item()
+    ```
+  * **Hands-on Activities:**
+      * Implement learning rate schedules and compare convergence
+      * Experiment with different activation functions
+      * Implement gradient checkpointing for memory efficiency
+      * Profile memory usage and computation time
+  * **Deliverable:** Production-ready training loop with monitoring
+
+### Day 12-14: Experiment Tracking & Evaluation
+
+  * **Learning Focus:** Scientific experimentation and model evaluation
+  * **Experiment Management:**
+      * Weights & Biases integration for experiment tracking
+      * Hyperparameter sweeps and optimization
+      * Model comparison and ablation studies
+      * Reproducible experiment configuration
+  * **Evaluation Metrics:**
+      * Perplexity on validation set
+      * Generation quality assessment
+      * Training stability metrics (gradient norms, loss variance)
+      * Inference speed benchmarks
+  * **Implementation Tasks:**
+    ```python
+    import wandb
+
+    def setup_experiment(config):
+        """Initialize experiment tracking"""
+        wandb.init(
+            project="gpt-from-scratch",
+            config=config.__dict__,
+            tags=["transformer", "language-model"]
+        )
+        
+        # Log model architecture
+        wandb.watch(model, log="all", log_freq=100)
+
+    def evaluate_model(model, val_loader, tokenizer):
+        """Comprehensive model evaluation"""
+        model.eval()
+        total_loss = 0
+        total_tokens = 0
+        
+        with torch.no_grad():
+            for batch in val_loader:
+                inputs, targets = batch
+                logits = model(inputs)
+                loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+                
+                total_loss += loss.item() * targets.numel()
+                total_tokens += targets.numel()
+        
+        perplexity = torch.exp(torch.tensor(total_loss / total_tokens))
+        
+        # Generate sample text
+        samples = generate_samples(model, tokenizer, prompts=[
+            "The future of artificial intelligence",
+            "In a world where technology",
+            "The most important lesson I learned"
+        ])
+        
+        return {
+            "perplexity": perplexity.item(),
+            "samples": samples
+        }
+    ```
+  * **Deliverable:** Experiment tracking system with comprehensive evaluation
+
+### Week 4: Optimization, Generation & Documentation
+
+### Day 15-16: Inference Optimization & Generation Strategies
+
+  * **Learning Focus:** Making models fast and controllable for production use
+  * **Optimization Techniques:**
+      * KV caching for efficient autoregressive generation
+      * Batched generation with padding management
+      * Memory optimization and garbage collection
+      * CPU vs GPU inference trade-offs
+  * **Generation Strategies:**
+      * Temperature-based sampling
+      * Top-k and top-p (nucleus) sampling
+      * Beam search for deterministic generation
+      * Repetition penalties and length normalization
+  * **Implementation Tasks:**
+    ```python
+    class OptimizedGenerator:
+        def __init__(self, model, tokenizer):
+            self.model = model
+            self.tokenizer = tokenizer
+            self.kv_cache = {}
+        
+        @torch.no_grad()
+        def generate_with_cache(self, prompt, max_length=100, temperature=1.0, top_p=0.9):
+            """Fast generation with KV caching"""
+            tokens = self.tokenizer.encode(prompt)
+            generated = torch.tensor(tokens).unsqueeze(0)
+            
+            for _ in range(max_length):
+                # Use cached keys/values for efficiency
+                logits = self.model(generated, use_cache=True)
+                next_token = self.sample_token(logits[:, -1, :], temperature, top_p)
+                generated = torch.cat([generated, next_token.unsqueeze(0)], dim=1)
+                
+                if next_token.item() == self.tokenizer.eos_token_id:
+                    break
+            
+            return self.tokenizer.decode(generated[0])
+        
+        def sample_token(self, logits, temperature, top_p):
+            """Advanced sampling with temperature and nucleus sampling"""
+            if temperature == 0:
+                return torch.argmax(logits)
+            
+            # Apply temperature
+            logits = logits / temperature
+            
+            # Nucleus sampling
+            sorted_logits, sorted_indices = torch.sort(logits, descending=True)
+            cumulative_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
+            
+            # Remove tokens with cumulative probability above threshold
+            sorted_indices_to_remove = cumulative_probs > top_p
+            sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
+            sorted_indices_to_remove[..., 0] = 0
+            
+            indices_to_remove = sorted_indices[sorted_indices_to_remove]
+            logits[indices_to_remove] = float('-inf')
+            
+            return torch.multinomial(F.softmax(logits, dim=-1), 1)
+    ```
+  * **Hands-on Activities:**
+      * Benchmark generation speed with different optimization techniques
+      * Compare sampling strategies on creative writing tasks
+      * Implement and test beam search for factual generation
+      * Profile memory usage during long sequence generation
+  * **Deliverable:** Optimized inference engine with multiple generation modes
+
+### Day 17-18: Interactive Demo & User Interface
+
+  * **Learning Focus:** Creating engaging demonstrations of model capabilities
+  * **Demo Components:**
+      * Gradio web interface for interactive generation
+      * Real-time generation with streaming responses
+      * Multiple generation modes and parameter controls
+      * Example prompts showcasing model capabilities
+  * **Implementation Tasks:**
+    ```python
+    import gradio as gr
+
+    def create_demo(model, tokenizer):
+        """Create interactive demo interface"""
+        
+        def generate_text(prompt, max_length, temperature, top_p, top_k):
+            try:
+                with torch.no_grad():
+                    generated = model.generate(
+                        prompt=prompt,
+                        max_length=max_length,
+                        temperature=temperature,
+                        top_p=top_p,
+                        top_k=top_k
+                    )
+                return generated
+            except Exception as e:
+                return f"Generation failed: {str(e)}"
+        
+        interface = gr.Interface(
+            fn=generate_text,
+            inputs=[
+                gr.Textbox(label="Prompt", placeholder="Enter your prompt here..."),
+                gr.Slider(10, 500, value=100, label="Max Length"),
+                gr.Slider(0.1, 2.0, value=0.8, label="Temperature"),
+                gr.Slider(0.1, 1.0, value=0.9, label="Top-p"),
+                gr.Slider(1, 100, value=50, label="Top-k")
+            ],
+            outputs=gr.Textbox(label="Generated Text"),
+            title="GPT Transformer Demo",
+            description="Generate text with your custom-trained transformer model"
+        )
+        
+        return interface
+
+    # Launch demo
+    demo = create_demo(model, tokenizer)
+    demo.launch(share=True)
+    ```
+  * **Demo Features:**
+      * Real-time parameter adjustment
+      * Example prompts for different use cases
+      * Generation comparison between settings
+      * Model information and training details
+  * **Deliverable:** Public demo accessible via web interface
+
+### Day 19-21: Comprehensive Documentation & Blog Post
+
+  * **Learning Focus:** Technical writing and knowledge sharing
+  * **Documentation Components:**
+      * **README:** Project overview, installation, and quick start
+      * **API Documentation:** Function signatures and usage examples
+      * **Architecture Guide:** Model design decisions and trade-offs
+      * **Training Guide:** How to reproduce results and extend the work
+  * **Blog Post Structure:**
+      * **Hook:** Why implement transformers from scratch in 2025?
+      * **Mathematical Foundation:** Key equations with intuitive explanations
+      * **Implementation Journey:** Major challenges and solutions
+      * **Training Experiments:** What worked, what didn't, and why
+      * **Results Showcase:** Generated examples and performance metrics
+      * **Lessons Learned:** Technical insights and practical advice
+      * **Open Questions:** Areas for future exploration
+  * **Writing Guidelines:**
+      * Balance technical depth with accessibility
+      * Include code snippets with clear explanations
+      * Use visualizations to illustrate complex concepts
+      * Share failures and debugging stories, not just successes
+      * Provide actionable advice for readers attempting similar projects
+  * **Success Metrics:**
+      * Technical accuracy verified by course community
+      * Clear explanations that help others understand transformers
+      * Code examples that run without modification
+      * Engaging narrative that maintains reader interest
+      * Professional quality suitable for portfolio inclusion
+  * **Deliverable:** Publication-ready blog post with complete project documentation
+
+## 🔧 Technical Deep Dives
+
+### Attention Mechanism Mathematics
+
+The self-attention mechanism is the heart of transformers. Here's the complete mathematical derivation:
+
+  * **Input Processing:**
+      * Given input sequence `$X \in \mathbb{R}^{n \times d_{\text{model}}}$`
+      * Project to queries, keys, values:
+        `$Q = XW\_Q$`, `$K = XW\_K$`, `$V = XW\_V$`
+        where `$W\_Q, W\_K, W\_V \in \mathbb{R}^{d\_{\text{model}} \times d\_k}$`
+  * **Attention Score Computation:**
+      * Attention scores: `$S = \frac{QK^T}{\sqrt{d\_k}}$`
+      * Causal mask: `$M\_{ij} = -\infty$` if `$i < j$`, else `$0$`
+      * Masked scores: `$S\_{\text{masked}} = S + M$`
+      * Attention weights: `$A = \text{softmax}(S\_{\text{masked}})$`
+  * **Output Generation:**
+      * Output: `$O = AV$`
+      * Multi-head: `$O = \text{Concat}(\text{head}\_1, ..., \text{head}\_h)W\_O$`
+        where `$\text{head}\_i = \text{Attention}(XW\_Q^i, XW\_K^i, XW\_V^i)$`
+  * **Implementation Considerations:**
+      * Numerical stability with large sequence lengths
+      * Memory efficiency for attention matrix storage
+      * Gradient flow through softmax operation
+      * Parallelization across attention heads
+
+### Training Stability & Optimization
+
+  * **Gradient Analysis:**
+    ```python
+    def analyze_gradients(model, loss):
+        """Monitor gradient statistics for training stability"""
+        total_norm = 0
+        param_count = 0
+        
+        for name, param in model.named_parameters():
+            if param.grad is not None:
+                param_norm = param.grad.data.norm(2)
+                total_norm += param_norm.item() ** 2
+                param_count += 1
+                
+                # Log per-layer gradient norms
+                wandb.log({f"grad_norm/{name}": param_norm.item()})
+        
+        total_norm = total_norm ** (1. / 2)
+        wandb.log({"grad_norm/total": total_norm})
+        
+        return total_norm
+    ```
+  * **Learning Rate Scheduling:**
+    ```python
+    def get_cosine_schedule_with_warmup(optimizer, num_warmup_steps, num_training_steps):
+        """Cosine learning rate schedule with linear warmup"""
+        
+        def lr_lambda(current_step):
+            if current_step < num_warmup_steps:
+                return float(current_step) / float(max(1, num_warmup_steps))
+            
+            progress = float(current_step - num_warmup_steps) / float(max(1, num_training_steps - num_warmup_steps))
+            return max(0.0, 0.5 * (1.0 + math.cos(math.pi * progress)))
+        
+        return LambdaLR(optimizer, lr_lambda)
+    ```
+
+### Memory Optimization Techniques
+
+  * **Gradient Checkpointing:**
+    ```python
+    class CheckpointedTransformerBlock(nn.Module):
+        def __init__(self, *args, **kwargs):
+            super().__init__()
+            # ... initialize layers ...
+        
+        def forward(self, x, mask=None):
+            if self.training:
+                return checkpoint(self._forward, x, mask)
+            else:
+                return self._forward(x, mask)
+        
+        def _forward(self, x, mask):
+            # Actual forward pass
+            attn_out = self.attention(self.norm1(x), mask=mask)
+            x = x + self.dropout(attn_out)
+            ff_out = self.ff(self.norm2(x))
+            x = x + self.dropout(ff_out)
+            return x
+    ```
+  * **KV Caching for Inference:**
+    ```python
+    class CachedAttention(nn.Module):
+        def __init__(self, d_model, n_heads):
+            super().__init__()
+            self.d_model = d_model
+            self.n_heads = n_heads
+            self.head_dim = d_model // n_heads
+            
+            self.q_proj = nn.Linear(d_model, d_model)
+            self.k_proj = nn.Linear(d_model, d_model)
+            self.v_proj = nn.Linear(d_model, d_model)
+            self.out_proj = nn.Linear(d_model, d_model)
+            
+            self.kv_cache = {}
+        
+        def forward(self, x, use_cache=False, cache_key=None):
+            B, T, C = x.size()
+            
+            if use_cache and cache_key in self.kv_cache:
+                # Use cached K, V and only compute for new tokens
+                cached_k, cached_v = self.kv_cache[cache_key]
+                
+                # Only process the last token
+                q = self.q_proj(x[:, -1:, :])  # (B, 1, C)
+                k_new = self.k_proj(x[:, -1:, :])  # (B, 1, C)
+                v_new = self.v_proj(x[:, -1:, :])  # (B, 1, C)
+                
+                # Concatenate with cache
+                k = torch.cat([cached_k, k_new], dim=1)  # (B, T, C)
+                v = torch.cat([cached_v, v_new], dim=1)  # (B, T, C)
+                
+                # Update cache
+                self.kv_cache[cache_key] = (k, v)
+            else:
+                # Standard computation
+                q = self.q_proj(x)  # (B, T, C)
+                k = self.k_proj(x)  # (B, T, C)
+                v = self.v_proj(x)  # (B, T, C)
+                
+                if use_cache:
+                    self.kv_cache[cache_key] = (k, v)
+            
+            # Reshape for multi-head attention
+            q = q.view(B, -1, self.n_heads, self.head_dim).transpose(1, 2)  # (B, nh, T, hs)
+            k = k.view(B, -1, self.n_heads, self.head_dim).transpose(1, 2)  # (B, nh, T, hs)
+            v = v.view(B, -1, self.n_heads, self.head_dim).transpose(1, 2)  # (B, nh, T, hs)
+            
+            # Attention computation
+            att = (q @ k.transpose(-2, -1)) * (1.0 / math.sqrt(k.size(-1)))
+            
+            # Causal masking
+            mask = torch.tril(torch.ones(T, T, device=x.device)).view(1, 1, T, T)
+            att = att.masked_fill(mask == 0, float('-inf'))
+            att = F.softmax(att, dim=-1)
+            
+            y = att @ v  # (B, nh, T, hs)
+            y = y.transpose(1, 2).contiguous().view(B, -1, C)  # (B, T, C)
+            
+            return self.out_proj(y)
+    ```
+
+## 📊 Assessment Rubric
+
+### Technical Implementation (50%)
+
+  * **Exceptional (A+):** All components implemented correctly with mathematical precision. Code is clean, well-documented, and follows best practices. Includes optimizations like gradient checkpointing and mixed precision. Comprehensive test suite with edge case coverage. Performance comparable to or better than reference implementations.
+  * **Proficient (A):** Core transformer architecture correctly implemented. Training runs successfully with reasonable convergence. Code is readable with adequate documentation. Basic optimizations implemented (e.g., proper initialization). Model generates coherent text samples.
+  * **Developing (B):** Most components work but may have minor mathematical errors. Training may be unstable or slow to converge. Code works but lacks documentation or has style issues. Limited optimization considerations. Generated text shows some coherence but quality varies.
+  * **Needs Improvement (C):** Implementation has significant errors affecting functionality. Training fails to converge or produces poor results. Code is difficult to understand or poorly structured. No consideration of optimization or best practices. Generated text is incoherent or repetitive.
+
+### Experimental Rigor (30%)
+
+  * **Exceptional (A+):** Comprehensive ablation studies with statistical significance testing. Multiple datasets and model sizes explored. Hyperparameter optimization with systematic approach. Detailed error analysis and failure case investigation. Results reproducible with provided code and instructions.
+  * **Proficient (A):** Systematic experiments with proper controls. Clear metrics and evaluation methodology. Some exploration of hyperparameters and configurations. Results are believable and well-documented. Code can reproduce main results.
+  * **Developing (B):** Basic experiments demonstrate model functionality. Limited exploration of different configurations. Adequate documentation of results and methodology. Some inconsistencies in experimental setup. Partial reproducibility.
+
+### Documentation & Communication (20%)
+
+  * **Exceptional (A+):** Blog post is publication-quality with clear narrative. Mathematical explanations are accurate and intuitive. Code examples are pedagogically effective. Professional-quality visualizations and figures. Receives positive engagement from technical community.
+  * **Proficient (A):** Clear technical writing that explains complex concepts. Good balance of depth and accessibility. Adequate code documentation and examples. Some visualizations to support explanations. Would be helpful to others attempting similar work.
+  * **Developing (B):** Basic documentation covers most important points. Some technical explanations but may lack clarity. Code is documented but not always clearly. Limited use of visualizations or examples. Would require additional explanation for full understanding.
+
+## 🔗 Resources & Extended Learning
+
+### Essential Papers
+
+  * **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** (Vaswani et al., 2017): The foundational paper that introduced the Transformer architecture. A must-read.
+  * **[Improving Language Understanding by Generative Pre-Training](https://www.google.com/search?q=https://s3-us-west-2.amazonaws.com/openai-assets/research-papers/language-unsupervised-corpus.pdf)** (Radford et al., 2018): Introduces the first GPT model (GPT-1), establishing the viability of generative pre-training for language understanding.
+  * **[Language Models are Unsupervised Multitask Learners](https://www.google.com/search?q=https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)** (Radford et al., 2019): The GPT-2 paper, showcasing the power of scaling up language models.
+  * **[Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)** (Brown et al., 2020): The GPT-3 paper, which demonstrated remarkable few-shot and zero-shot capabilities.
+  * **[On Layer Normalization in the Transformer Architecture](https://arxiv.org/abs/2002.04745)** (Xiong et al., 2020): A deep dive into the effects of Pre-Norm vs. Post-Norm, crucial for training stability.
+  * **[Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)** (Kingma & Ba, 2014): The original paper on the Adam optimizer.
+  * **[Decoupled Weight Decay Regularization](https://arxiv.org/abs/1711.05101)** (Loshchilov & Hutter, 2017): Introduces the AdamW optimizer, a key component for stable transformer training.
+
+### Key Blog Posts & Tutorials
+
+  * **[The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)** by Jay Alammar: An intuitive, visual explanation of the Transformer architecture. Excellent for building intuition before diving into code.
+  * **[The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)** by Harvard NLP: A line-by-line implementation of the original Transformer paper in PyTorch. A great reference for code structure.
+  * **[Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY)** by Andrej Karpathy: A hands-on video tutorial where he builds a GPT from scratch, explaining every step in detail.
+
+### Helpful Books
+
+  * **Speech and Language Processing** (3rd ed. draft) by Dan Jurafsky and James H. Martin: A comprehensive textbook on NLP, with excellent chapters on vector semantics, sequence-to-sequence models, and attention.
+  * **Deep Learning with PyTorch** by Eli Stevens, Luca Antiga, and Thomas Viehmann: A practical guide to building neural networks with PyTorch, covering many of the fundamentals needed for this module.

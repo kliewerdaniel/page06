@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Art", href: "/art" },
+  { name: "GenAI-Course", href: "/genai-course" },
 ];
 
 const Header = () => {
