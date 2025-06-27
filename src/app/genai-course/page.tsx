@@ -21,6 +21,14 @@ export default function GenAICourseLanding() {
         Welcome to GEN-AI 4001! This course provides a comprehensive deep dive into the engineering aspects of generative AI, from foundational models to advanced deployment and governance.
       </p>
 
+      <h2 className="text-2xl font-semibold mt-8 mb-4">Syllabus</h2>
+      <p>
+        <Link href="/genai-course/syllabus" className="text-blue-600 hover:underline">
+          View the full course syllabus
+        </Link>
+      </p>
+
+
       <h2 className="text-2xl font-semibold mb-4">Course Modules</h2>
       <ul className="space-y-2">
         {allModuleDocs
@@ -45,12 +53,7 @@ export default function GenAICourseLanding() {
           ))}
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Syllabus</h2>
-      <p>
-        <Link href="/genai-course/syllabus" className="text-blue-600 hover:underline">
-          View the full course syllabus
-        </Link>
-      </p>
+
     </div>
   );
 }
