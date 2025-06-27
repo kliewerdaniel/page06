@@ -5,6 +5,7 @@ import React from "react";
 
 interface MarkdownRendererProps {
   source: MDXRemoteSerializeResult;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   components?: Record<string, React.ComponentType<any>>;
 }
 
