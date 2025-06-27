@@ -27,7 +27,7 @@ export default function GenAICourseLanding() {
           View the full course syllabus
         </Link>
       </p>
-
+      <p></p>
 
       <h2 className="text-2xl font-semibold mb-4">Course Modules</h2>
       <ul className="space-y-2">
