@@ -1,0 +1,10 @@
+[
+  {"title":"Orientation","slug":"orientation"},
+  {"title":"Transformers from Scratch","slug":"transformer"},
+  {"title":"Domain-Specific Fine-Tuning","slug":"fine-tune"},
+  {"title":"Serving LLMs with FastAPI + VLLM","slug":"serving"},
+  {"title":"RAG with Vector Databases","slug":"rag"},
+  {"title":"Multimodal Reasoning & Guardrails","slug":"multimodal-guardrails"},
+  {"title":"MLOps and Model Governance","slug":"mlops"},
+  {"title":"Capstone: Job-Market Simulation","slug":"capstone"}
+]
