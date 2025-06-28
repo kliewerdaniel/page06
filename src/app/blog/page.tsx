@@ -24,7 +24,17 @@ export default function BlogPage() {
     const fetchPosts = async () => {
       setLoading(true);
       const newPosts = await getSortedPostsData(POSTS_PER_PAGE, page * POSTS_PER_PAGE);
-      setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+      setPosts((prevPosts) => {
+        const allPosts = [...prevPosts, ...newPosts];
+        const uniqueSlugs = new Set();
+        return allPosts.filter(post => {
+          if (uniqueSlugs.has(post.slug)) {
+            return false;
+          }
+          uniqueSlugs.add(post.slug);
+          return true;
+        });
+      });
       setLoading(false);
       if (newPosts.length < POSTS_PER_PAGE) {
         setHasMore(false);

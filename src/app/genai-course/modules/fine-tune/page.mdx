@@ -4,4 +4,633 @@ weeks: "5-7"
 status: "draft"
 type: "ModuleDoc"
 ---
-TODO: Add overview, learning objectives, and links to deliverables.
+# Module 2: Transformer Implementation - Week 2
+## Building GPT from Mathematical Foundations
+
+---
+
+## 🎯 Module Overview
+
+This week marks your transition from theory to implementation. You'll build a complete GPT-style transformer from scratch using PyTorch, implementing every component from the mathematical foundations up. By the end of this module, you'll have a working language model that can generate coherent text and a deep understanding of how attention mechanisms actually work.
+
+**Time Commitment:** 20-25 hours | **Difficulty:** High | **Prerequisites:** Linear algebra, Python proficiency
+
+---
+
+## 📋 Learning Objectives
+
+By completing this module, you will:
+
+### Technical Mastery
+- **Implement multi-head attention** from the mathematical formulation Q, K, V = XW_q, XW_k, XW_v
+- **Build position encodings** using sinusoidal functions and understand why they enable sequence understanding
+- **Create the complete transformer architecture** with proper residual connections and layer normalization
+- **Design efficient matrix operations** using PyTorch's tensor operations for GPU acceleration
+- **Implement text tokenization** and understand the relationship between vocabulary size and model capacity
+
+### Conceptual Understanding
+- **Grasp the attention mechanism** beyond surface-level explanations—understand why it solves the sequence modeling problem
+- **Recognize architectural choices** in transformer design and their impact on model performance
+- **Debug neural networks** using gradient flow analysis and activation visualization
+- **Optimize memory usage** through batching strategies and gradient checkpointing
+
+### Professional Skills
+- **Write modular, testable code** following software engineering best practices
+- **Create comprehensive documentation** explaining complex mathematical concepts
+- **Profile and optimize** PyTorch code for training efficiency
+- **Use version control** effectively for iterative model development
+
+---
+
+## 🏗️ Architecture Overview
+
+### The Complete Transformer Stack
+
+```
+Input Text → Tokenization → Embedding → Position Encoding
+                                ↓
+    Multi-Head Attention → Add & Norm → Feed Forward
+                                ↓
+    Multi-Head Attention → Add & Norm → Feed Forward
+                                ↓
+                        ... (repeat N layers)
+                                ↓
+            Layer Norm → Linear Head → Softmax → Output Probabilities
+```
+
+### Key Components You'll Build
+
+1. **Token Embeddings** - Convert discrete tokens to continuous vectors
+2. **Positional Encodings** - Inject sequence position information
+3. **Multi-Head Attention** - The core mechanism for sequence modeling
+4. **Feed-Forward Networks** - Position-wise transformations
+5. **Layer Normalization** - Stabilize training dynamics
+6. **Output Head** - Convert hidden states to token probabilities
+
+---
+
+## 📊 Week Structure
+
+### Day 1-2: Mathematical Foundations & Setup
+**Goal:** Understand the theory and set up your development environment
+
+#### Mathematical Deep Dive
+- **Attention Mechanism Derivation**
+  - Start with the intuition: "What should the model pay attention to?"
+  - Derive the scaled dot-product attention formula: Attention(Q,K,V) = softmax(QK^T/√d_k)V
+  - Understand why scaling by √d_k prevents vanishing gradients
+  - Work through concrete examples with small matrices
+
+- **Multi-Head Attention Mathematics**
+  - Why multiple heads? Understanding different types of linguistic relationships
+  - Mathematical formulation: MultiHead(Q,K,V) = Concat(head_1, ..., head_h)W^O
+  - Parameter counting: understanding the computational complexity
+
+#### Environment Setup
+```bash
+# Create project structure
+mkdir transformer-from-scratch
+cd transformer-from-scratch
+git init
+
+# Set up Python environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install torch torchvision numpy matplotlib wandb tensorboard pytest black isort
+
+# Create directory structure
+mkdir src tests data notebooks checkpoints
+touch src/__init__.py tests/__init__.py
+```
+
+#### Development Standards
+- **Code Quality:** Use Black for formatting, isort for imports
+- **Testing:** Write unit tests for each component
+- **Logging:** Use Python logging for debugging and monitoring
+- **Version Control:** Commit frequently with descriptive messages
+
+### Day 3-4: Core Components Implementation
+
+#### Token Embeddings & Positional Encoding
+
+**Implementation Focus:**
+```python
+class TokenEmbedding(nn.Module):
+    def __init__(self, vocab_size: int, d_model: int):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, d_model)
+        self.d_model = d_model
+    
+    def forward(self, x):
+        # Why do we scale by sqrt(d_model)?
+        return self.embedding(x) * math.sqrt(self.d_model)
+```
+
+**Key Learning Points:**
+- Why embedding dimensions matter for model capacity
+- The relationship between vocabulary size and computational cost
+- How scaling affects gradient flow during training
+
+#### Positional Encoding Deep Dive
+```python
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model: int, max_len: int = 5000):
+        super().__init__()
+        pe = torch.zeros(max_len, d_model)
+        position = torch.arange(0, max_len).unsqueeze(1).float()
+        
+        # Why sinusoidal? Mathematical derivation and intuition
+        div_term = torch.exp(torch.arange(0, d_model, 2).float() * 
+                           -(math.log(10000.0) / d_model))
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+        
+        self.register_buffer('pe', pe.unsqueeze(0))
+```
+
+**Understanding Questions to Answer:**
+- Why not learnable position embeddings?
+- How do sinusoidal encodings enable length generalization?
+- What happens to position information in deeper layers?
+
+#### Multi-Head Attention Implementation
+
+**Core Implementation:**
+```python
+class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model: int, n_heads: int, dropout: float = 0.1):
+        super().__init__()
+        assert d_model % n_heads == 0
+        
+        self.d_model = d_model
+        self.n_heads = n_heads
+        self.d_k = d_model // n_heads
+        
+        # Linear transformations for Q, K, V
+        self.w_q = nn.Linear(d_model, d_model, bias=False)
+        self.w_k = nn.Linear(d_model, d_model, bias=False)
+        self.w_v = nn.Linear(d_model, d_model, bias=False)
+        self.w_o = nn.Linear(d_model, d_model)
+        
+        self.dropout = nn.Dropout(dropout)
+        
+    def scaled_dot_product_attention(self, Q, K, V, mask=None):
+        # The heart of the transformer
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.d_k)
+        
+        if mask is not None:
+            scores.masked_fill_(mask == 0, -1e9)
+        
+        attention_weights = F.softmax(scores, dim=-1)
+        attention_weights = self.dropout(attention_weights)
+        
+        return torch.matmul(attention_weights, V), attention_weights
+```
+
+**Critical Implementation Details:**
+- **Masking:** Implementing causal masking for autoregressive generation
+- **Efficient Computation:** Batched matrix operations for multiple heads
+- **Gradient Flow:** Understanding how attention weights affect backpropagation
+
+### Day 5-6: Complete Architecture & Training Setup
+
+#### Transformer Block Assembly
+```python
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model: int, n_heads: int, d_ff: int, dropout: float):
+        super().__init__()
+        self.attention = MultiHeadAttention(d_model, n_heads, dropout)
+        self.feed_forward = FeedForward(d_model, d_ff, dropout)
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+        self.dropout = nn.Dropout(dropout)
+    
+    def forward(self, x, mask=None):
+        # Pre-normalization vs post-normalization - why does it matter?
+        attn_output, _ = self.attention(self.norm1(x), self.norm1(x), self.norm1(x), mask)
+        x = x + self.dropout(attn_output)
+        
+        ff_output = self.feed_forward(self.norm2(x))
+        x = x + self.dropout(ff_output)
+        
+        return x
+```
+
+#### Complete GPT Model
+```python
+class GPT(nn.Module):
+    def __init__(self, vocab_size: int, d_model: int, n_heads: int, 
+                 n_layers: int, d_ff: int, max_len: int, dropout: float = 0.1):
+        super().__init__()
+        self.token_embedding = TokenEmbedding(vocab_size, d_model)
+        self.pos_encoding = PositionalEncoding(d_model, max_len)
+        
+        self.transformer_blocks = nn.ModuleList([
+            TransformerBlock(d_model, n_heads, d_ff, dropout)
+            for _ in range(n_layers)
+        ])
+        
+        self.ln_f = nn.LayerNorm(d_model)
+        self.head = nn.Linear(d_model, vocab_size, bias=False)
+        
+        # Weight tying - why tie input and output embeddings?
+        self.head.weight = self.token_embedding.embedding.weight
+        
+        self.apply(self._init_weights)
+    
+    def _init_weights(self, module):
+        # Proper weight initialization is crucial
+        if isinstance(module, nn.Linear):
+            torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
+            if module.bias is not None:
+                torch.nn.init.zeros_(module.bias)
+        elif isinstance(module, nn.Embedding):
+            torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
+```
+
+#### Training Infrastructure
+```python
+class GPTTrainer:
+    def __init__(self, model, train_loader, val_loader, config):
+        self.model = model
+        self.train_loader = train_loader
+        self.val_loader = val_loader
+        self.config = config
+        
+        # Optimizer with proper hyperparameters
+        self.optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=config.learning_rate,
+            betas=(0.9, 0.95),
+            weight_decay=config.weight_decay
+        )
+        
+        # Learning rate scheduling
+        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+            self.optimizer, T_max=config.max_steps
+        )
+        
+    def train_step(self, batch):
+        self.model.train()
+        self.optimizer.zero_grad()
+        
+        input_ids, targets = batch
+        logits = self.model(input_ids)
+        
+        # Compute loss - why cross-entropy for language modeling?
+        loss = F.cross_entropy(
+            logits.view(-1, logits.size(-1)),
+            targets.view(-1),
+            ignore_index=-1
+        )
+        
+        loss.backward()
+        
+        # Gradient clipping - essential for transformer training
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+        
+        self.optimizer.step()
+        self.scheduler.step()
+        
+        return loss.item()
+```
+
+### Day 7: Testing, Debugging & Text Generation
+
+#### Comprehensive Testing Strategy
+```python
+def test_attention_mechanism():
+    """Test that attention weights sum to 1 and have correct shape"""
+    d_model, n_heads, seq_len, batch_size = 512, 8, 100, 32
+    
+    attention = MultiHeadAttention(d_model, n_heads)
+    x = torch.randn(batch_size, seq_len, d_model)
+    
+    output, weights = attention(x, x, x)
+    
+    # Shape assertions
+    assert output.shape == x.shape
+    assert weights.shape == (batch_size, n_heads, seq_len, seq_len)
+    
+    # Attention weights should sum to 1
+    assert torch.allclose(weights.sum(dim=-1), torch.ones_like(weights.sum(dim=-1)))
+
+def test_gradient_flow():
+    """Ensure gradients flow through all components"""
+    model = GPT(vocab_size=1000, d_model=256, n_heads=8, n_layers=6, d_ff=1024, max_len=512)
+    
+    input_ids = torch.randint(0, 1000, (2, 50))
+    targets = torch.randint(0, 1000, (2, 50))
+    
+    logits = model(input_ids)
+    loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+    loss.backward()
+    
+    # Check that all parameters have gradients
+    for name, param in model.named_parameters():
+        assert param.grad is not None, f"No gradient for {name}"
+```
+
+#### Text Generation Implementation
+```python
+def generate_text(model, tokenizer, prompt, max_length=100, temperature=0.8, top_k=50):
+    """Generate text using the trained model"""
+    model.eval()
+    
+    # Tokenize prompt
+    input_ids = tokenizer.encode(prompt, return_tensors='pt')
+    
+    with torch.no_grad():
+        for _ in range(max_length):
+            # Forward pass
+            logits = model(input_ids)
+            
+            # Get next token probabilities
+            next_token_logits = logits[0, -1, :] / temperature
+            
+            # Apply top-k filtering
+            if top_k > 0:
+                top_k_logits, top_k_indices = torch.topk(next_token_logits, top_k)
+                next_token_logits = torch.full_like(next_token_logits, float('-inf'))
+                next_token_logits[top_k_indices] = top_k_logits
+            
+            # Sample next token
+            probs = F.softmax(next_token_logits, dim=-1)
+            next_token = torch.multinomial(probs, 1)
+            
+            # Append to sequence
+            input_ids = torch.cat([input_ids, next_token.unsqueeze(0)], dim=-1)
+            
+            # Stop at end token
+            if next_token.item() == tokenizer.eos_token_id:
+                break
+    
+    return tokenizer.decode(input_ids[0], skip_special_tokens=True)
+```
+
+---
+
+## 🛠️ Hands-On Exercises
+
+### Exercise 1: Attention Visualization
+Create visualizations showing what your attention heads are learning:
+
+```python
+def visualize_attention_patterns(model, text, layer_idx=0, head_idx=0):
+    """Create heatmap showing attention patterns"""
+    model.eval()
+    
+    # Get attention weights from specific layer/head
+    with torch.no_grad():
+        # Hook to capture attention weights
+        attention_weights = []
+        
+        def hook_fn(module, input, output):
+            attention_weights.append(output[1])  # Attention weights
+        
+        hook = model.transformer_blocks[layer_idx].attention.register_forward_hook(hook_fn)
+        
+        # Forward pass
+        input_ids = tokenizer.encode(text, return_tensors='pt')
+        _ = model(input_ids)
+        
+        hook.remove()
+    
+    # Create heatmap
+    weights = attention_weights[0][0, head_idx].cpu().numpy()
+    tokens = tokenizer.convert_ids_to_tokens(input_ids[0])
+    
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(weights, xticklabels=tokens, yticklabels=tokens, cmap='Blues')
+    plt.title(f'Attention Pattern - Layer {layer_idx}, Head {head_idx}')
+    plt.show()
+```
+
+### Exercise 2: Architecture Ablation Study
+Systematically remove components to understand their importance:
+
+```python
+def ablation_study():
+    """Compare model performance with different architectural choices"""
+    configs = [
+        {'n_heads': 1, 'name': 'single_head'},
+        {'n_heads': 8, 'name': 'multi_head'},
+        {'n_layers': 3, 'name': 'shallow'},
+        {'n_layers': 12, 'name': 'deep'},
+        {'dropout': 0.0, 'name': 'no_dropout'},
+        {'dropout': 0.1, 'name': 'with_dropout'},
+    ]
+    
+    results = {}
+    for config in configs:
+        model = GPT(**config)
+        trainer = GPTTrainer(model, train_loader, val_loader, config)
+        
+        # Train for fixed number of steps
+        for step in range(1000):
+            loss = trainer.train_step(next(iter(train_loader)))
+        
+        # Evaluate
+        val_loss = evaluate_model(model, val_loader)
+        results[config['name']] = val_loss
+    
+    return results
+```
+
+### Exercise 3: Memory Optimization
+Implement techniques to reduce memory usage:
+
+```python
+class MemoryEfficientGPT(GPT):
+    """GPT with memory optimization techniques"""
+    
+    def __init__(self, *args, use_checkpointing=True, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.use_checkpointing = use_checkpointing
+    
+    def forward(self, x, mask=None):
+        x = self.token_embedding(x) + self.pos_encoding(x)
+        
+        for block in self.transformer_blocks:
+            if self.use_checkpointing and self.training:
+                # Use gradient checkpointing to save memory
+                x = torch.utils.checkpoint.checkpoint(block, x, mask)
+            else:
+                x = block(x, mask)
+        
+        x = self.ln_f(x)
+        return self.head(x)
+```
+
+---
+
+## 📈 Performance Benchmarks
+
+### Training Targets
+By the end of the week, your model should achieve:
+
+- **Perplexity:** < 150 on validation set (WikiText-2)
+- **Training Speed:** > 1000 tokens/second on single GPU
+- **Memory Usage:** < 8GB for 50M parameter model
+- **Generation Quality:** Coherent text for 2-3 sentences
+
+### Optimization Checklist
+- [ ] Mixed precision training (FP16)
+- [ ] Gradient accumulation for larger effective batch sizes
+- [ ] Efficient data loading with multiple workers
+- [ ] Proper learning rate scheduling
+- [ ] Gradient clipping to prevent instability
+
+---
+
+## 📝 Deliverables
+
+### 1. Working Implementation (40 points)
+**File:** `src/transformer.py`
+
+Complete, documented implementation including:
+- All transformer components with proper shapes and operations
+- Training loop with logging and checkpointing
+- Text generation function with temperature and top-k sampling
+- Comprehensive unit tests with >90% coverage
+
+**Evaluation Criteria:**
+- Code runs without errors and produces reasonable outputs
+- Proper PyTorch best practices (device handling, gradient management)
+- Modular design with clear separation of concerns
+- Performance meets benchmark targets
+
+### 2. Technical Documentation (35 points)
+**File:** `README.md` + `docs/architecture.md`
+
+Comprehensive documentation including:
+- Mathematical derivation of key components (attention, positional encoding)
+- Architecture diagrams showing data flow
+- Training procedure and hyperparameter choices
+- Performance analysis and optimization techniques
+
+**Required Sections:**
+1. **Mathematical Foundation** - Derive attention mechanism step-by-step
+2. **Architecture Overview** - Visual diagrams with component explanations
+3. **Implementation Details** - Key design decisions and their rationale
+4. **Training Process** - Loss curves, convergence analysis, hyperparameter sensitivity
+5. **Performance Analysis** - Speed benchmarks, memory usage, scaling behavior
+
+### 3. Experimental Analysis (25 points)
+**File:** `notebooks/transformer_analysis.ipynb`
+
+Jupyter notebook containing:
+- Attention pattern visualizations for different heads and layers
+- Ablation study results comparing architectural choices
+- Loss curve analysis and convergence behavior
+- Text generation examples with different sampling strategies
+- Performance profiling and optimization analysis
+
+**Analysis Requirements:**
+- Statistical significance testing for architectural comparisons
+- Qualitative analysis of generated text quality
+- Quantitative metrics (perplexity, BLEU scores where applicable)
+- Memory and computational complexity analysis
+
+---
+
+## 🔍 Common Pitfalls & Debugging Guide
+
+### Implementation Issues
+
+**Problem:** Attention weights don't sum to 1
+```python
+# Wrong: Softmax over wrong dimension
+attention_weights = F.softmax(scores, dim=-2)  # ❌
+
+# Correct: Softmax over key dimension
+attention_weights = F.softmax(scores, dim=-1)  # ✅
+```
+
+**Problem:** Gradient explosion during training
+```python
+# Add gradient clipping
+torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+
+# Use proper weight initialization
+def _init_weights(self, module):
+    if isinstance(module, nn.Linear):
+        torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
+```
+
+**Problem:** Slow training speed
+```python
+# Enable mixed precision training
+scaler = torch.cuda.amp.GradScaler()
+
+with torch.cuda.amp.autocast():
+    logits = model(input_ids)
+    loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+
+scaler.scale(loss).backward()
+scaler.step(optimizer)
+scaler.update()
+```
+
+### Conceptual Issues
+
+**Q: Why do we scale attention scores by √d_k?**
+A: Without scaling, the dot products grow large as d_k increases, pushing the softmax into regions with extremely small gradients, making training unstable.
+
+**Q: Why use sinusoidal positional encodings instead of learned embeddings?**
+A: Sinusoidal encodings allow the model to extrapolate to sequence lengths longer than those seen during training, while learned embeddings are fixed to the maximum training length.
+
+**Q: What's the difference between pre-norm and post-norm architectures?**
+A: Pre-norm (used in modern transformers) applies layer normalization before the sub-layers, leading to more stable training and better gradient flow.
+
+---
+
+## 📚 Extended Learning Resources
+
+### Essential Papers
+1. **"Attention Is All You Need"** (Vaswani et al., 2017) - The original transformer paper
+2. **"Language Models are Unsupervised Multitask Learners"** (Radford et al., 2019) - GPT-2 architecture and scaling insights
+3. **"On Layer Normalization in the Transformer Architecture"** (Xiong et al., 2020) - Pre-norm vs post-norm analysis
+
+### Technical Deep Dives
+- **The Illustrated Transformer** by Jay Alammar - Visual explanations of transformer mechanics
+- **The Annotated Transformer** by Harvard NLP - Code walkthrough with mathematical explanations
+- **Transformer Circuits Thread** by Anthropic - Understanding what transformers learn
+
+### Implementation References
+- **nanoGPT** by Andrej Karpathy - Minimal, educational GPT implementation
+- **Transformers Library** by Hugging Face - Production-ready implementations
+- **Fairseq** by Facebook AI - Research-oriented transformer implementations
+
+---
+
+## 🎯 Success Metrics & Next Steps
+
+### Week 2 Completion Criteria
+- [ ] All unit tests pass with >90% code coverage
+- [ ] Model achieves target perplexity on validation set
+- [ ] Documentation includes mathematical derivations and architecture diagrams
+- [ ] Generated text demonstrates basic coherence and grammar
+- [ ] Code follows professional standards (formatting, documentation, version control)
+
+### Preparation for Week 3
+- **Review fine-tuning literature** - Understand transfer learning for language models
+- **Explore parameter-efficient methods** - LoRA, adapters, and prompt tuning
+- **Study evaluation metrics** - BLEU, ROUGE, perplexity, and human evaluation
+- **Familiarize with domain adaptation** - How to specialize models for specific tasks
+
+### Career Development Notes
+This implementation demonstrates several key skills employers look for:
+- **Deep technical knowledge** - Understanding transformers at the mathematical level
+- **Implementation ability** - Building complex systems from scratch
+- **Optimization skills** - Making models efficient and scalable
+- **Documentation** - Explaining complex concepts clearly
+- **Testing** - Ensuring code reliability and correctness
+
+Add this project to your portfolio with emphasis on the mathematical depth and implementation quality. The ability to build transformers from scratch sets you apart from developers who only use pre-built models.
+
+---
+
+*Next week, we'll take your transformer implementation and fine-tune it for specific domains using parameter-efficient techniques like LoRA. You'll learn how to adapt pre-trained models for specialized tasks while maintaining computational efficiency.*
