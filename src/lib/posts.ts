@@ -74,7 +74,7 @@ export async function getPostData(slug: string) {
   const mdxSource = await serialize(matterResult.content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypePrismPlus],
+      rehypePlugins: [rehypePrismPlus as any],
     },
   });
 
