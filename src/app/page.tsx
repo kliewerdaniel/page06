@@ -108,7 +108,6 @@ export default function HomePage() {
                 />
               </Button>
             </Link>
-            </Link>
             <Link
               href="https://6340588028610.gumroad.com/l/squjox"
               passHref
