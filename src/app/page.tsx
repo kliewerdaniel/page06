@@ -118,6 +118,16 @@ export default function HomePage() {
                 <span className="relative z-10">Writing-Style Personas PDF</span>
               </Button>
             </Link>
+            <Link
+              href="https://6340588028610.gumroad.com/l/ddsrtm"
+              passHref
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="text-white bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 relative overflow-hidden group">
+                <span className="relative z-10">Building Agentic Knowledge Graphs PDF</span>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </motion.div>
