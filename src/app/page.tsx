@@ -44,7 +44,7 @@ export default function HomePage() {
           transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           className="pt-8"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/projects" passHref>
               <Button
                 className="text-white bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 relative overflow-hidden group"
