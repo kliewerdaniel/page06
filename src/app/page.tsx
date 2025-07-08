@@ -108,6 +108,16 @@ export default function HomePage() {
                 <span className="relative z-10">Building Agentic Knowledge Graphs PDF</span>
               </Button>
             </Link>
+            <Link
+              href="Build an AI-Powered Q&A Forum with Server Actions, Streaming, and Agentic Memory in Next.js 14+.pdf"
+              passHref
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="text-white bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 relative overflow-hidden group">
+                <span className="relative z-10">Build an AI-Powered Q&A Forum PDF</span>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </motion.div>
