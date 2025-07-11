@@ -118,6 +118,16 @@ export default function HomePage() {
                 <span className="relative z-10">Build an AI-Powered Q&A Forum PDF</span>
               </Button>
             </Link>
+                        <Link
+              href="https://6340588028610.gumroad.com/l/bulxtf"
+              passHref
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="text-white bg-transparent border border-white hover:bg-white hover:text-black transition-colors duration-300 relative overflow-hidden group">
+                <span className="relative z-10">How to Build and Sell AI Products Without Any Money</span>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </motion.div>
